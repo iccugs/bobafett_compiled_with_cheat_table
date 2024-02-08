@@ -1,0 +1,124 @@
+start 1.08 Towkillv1.08 (Lord'Demagod)
+4a43b8 00 01
+4a4428 00 01
+4a4460 00 01
+4a44d0 00 01
+4a4508 00 01
+4a4540 00 01
+4a4578 00 01
+4a45b0 00 01
+4a45e8 00 01
+4a4620 00 01
+4a4658 00 01
+4a4690 00 01
+4a46c8 00 01
+4a4700 00 01
+4a4738 00 01
+4a4770 00 01
+4a47a8 00 01
+4a47b1 00 20
+4a47e0 00 01
+4a4818 00 01
+4a4850 00 01
+4a4888 00 01
+4a48c0 00 01
+4a48f8 00 01
+4a49a0 00 01
+4a49d8 00 01
+4a4a10 00 01
+4a4a48 00 01
+4a4ab8 00 01
+4a4b28 00 01
+4a4b60 00 01
+4a4c3c 496e7669736962 53757065722053
+4a4c44 6c69 6768
+4a4c47 79 00
+end
+
+start v1.08 GodMode(Lord'Demagod)
+44013d 77 eb
+end
+
+start v1.08 God  from Monsters(Lord'Demagod)
+435aa4 75 eb
+42adb2 75 eb
+end
+
+start v1.08 Godly Mana(Lord'Demagod)
+458db8 e8e2 5ec3
+end
+
+start v1.08 Infinite Mana Sheild(Lord'Demagod)
+42f93e 02 00
+end
+
+start v1.08 autodupe(Lord'Demagod)
+41dbee ff 00
+end
+
+start v1.08 Unlimited Belt(Lord'Demagod)
+41e024 838c32d8cb6800ff 9090909090909090
+end
+
+start v1.08 No Drops At Death(Lord'Demagod)
+44e5ff 0f85 90e9
+44e5e1 7c eb
+end
+
+start v1.08 Full Map(Lord'Demagod)
+402e1f 75 eb
+end
+
+start v1.08 Lord'Demagod's  Level Finder
+402f15 a07ed15b0084c0742b0fb6c0508d8500ffffff 68cba14700c381c1d885680052512d00010000
+402f35 0c 10
+402f49 5ec9 33d2
+485b10 4c6576656c3a20256900 25733a20256400000000
+47a1cb 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 33c9b1048bd94969c9d854000080b9d88568000074110fbe91cc8468008bc5e82c8df8ff83c60f8bcbe2d94b5ec9c3
+end
+
+start v1.08 Pk Map Tracker(Lord'Demagod)
+401fe4 75 eb
+404cad 75 eb
+4029d7 8b1d9484680069dbd8540000 b80000000090e88684010090
+end
+
+start v1.08 Fastest Hit Recovery(Lord'Demagod)
+44e1fe 53558b c20400
+end
+
+start v1.08 Unlimited Staff Charges(Lord'Demagod)
+41f4f4 4a 90
+end
+
+start v1.08 FastWalk(Demagod)
+44f15b 0f85f3000000 909090909090
+44f2d5 0f85cd000000 909090909090
+44f429 0f8507010000 909090909090
+end
+
+start v1.08 Multi-Spell(Lord'Demagod)
+44ff08 75 74
+44ff6e 74 75
+44ffa8 85 84
+4500ee 85 84
+4501e3 75 74
+end
+
+start v1.08 All Monsters Drop Items(Lord'Demagod)
+422b24 75 eb
+end
+
+start v1.08 More Unique Drops(Lord'Demagod)
+422be1 04 00
+end
+
+start v1.08 AutoSet Map On(Lord'Demagod)
+401da4 25 0d
+401da9 00 01
+end
+
+start v1.08 Protection From AutoKill(Lord'Demagod)
+440139 00ee0200 bf680100
+end
+

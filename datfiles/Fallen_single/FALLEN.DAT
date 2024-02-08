@@ -1,0 +1,160 @@
+This DAT was compiled from many other DAT files. This DAT has credit to -Soulburner-, Henjo, Sabwafare, HeLlRaZoR, and the GREAT BoBaFeTT.
+
+start note {Fallen_Wolf}'s Single Player
+end
+
+start note DAT v1.00
+end
+
+start note More DATs to come!
+end
+
+start v1.07 Immortallity
+4403d2 77 eb
+48f5c8 446961626c6f2076312e303700000000000000000000000000000000000000 446961626c6f206861636b656420627920275468655f43726f636b277e484b
+435c93 75 eb
+42af77 75 eb
+4450e0 0f eb
+4450f3 0f eb
+42ae84 75 eb
+end
+
+start v1.07 Ethereal
+44d232 c6 e6
+end
+
+start v1.07 Mana Lord
+458d57 e8d8 5ec3
+end
+
+start v1.07 40 Level Spells
+4512a9 7427 9090
+4512c5 0f 28
+4512cd 7e03 9090
+4512d1 0f 28 
+end
+
+
+start v1.07 Max Stats
+6878fc 0000 ffff
+end
+
+start v1.07 Allways Drop Rares
+422C85 75 EB
+end
+
+start v1.07 Higher Chance For Unique
+422D41 7404 9090
+end
+
+start v1.07 Show Item Names On Ground
+423727 75 EB
+end
+
+start v1.07 One Space Per Item
+407461 a3949f4b00 e85a260700
+479ac0 000000000000 6a1c588bc8c3
+end
+
+start v1.07 Easy Level Up
+451205 02 00
+end
+
+start v1.07 View Traps With All Classes
+449dd5 7528 9090
+end
+
+Start v1.07 See Monster Stats
+43b340 7c68 9090
+43b3ad 0f8cfc000000 909090909090
+end
+
+start v1.07 Regeneration
+4513bd 7438 9090
+4513c6 742f 9090
+4513ce fc 10
+4513d5 fc 10
+4513d6 f78664010000c0ffffff e8e19afcff9090909090
+41aebc 8e90a447008d 8b8664010000
+41aec2 5c0b01741581 3b8668010000
+41aec8 fb41 7218
+41aeca 0200007f0dff 8b8668010000
+41aed0 7424148bd68b 898664010000
+41aed6 cfe8bf91feff 8b8660010000
+41aedc 0fb68690a447 89865c010000
+41aee2 008d7c07018b4424108a f78664010000c0ffffff
+41aeec 00 c3
+end
+
+start v1.07 Resist All
+42009b 4b 7f
+42009f 7e02 9090
+4200ab 7e02 9090
+4200b7 7e02 9090
+405a2a 7d17 9090
+405a8b 7d17 9090
+405ae7 7d17 9090
+end
+
+start v1.07 Max Light Radius
+41ff20 7e03 9090
+end
+
+start v1.07 Billionaire
+45c5c5 7d eb
+45c754 7d eb
+45d5a4 7d eb
+45d05e 7d eb
+45d262 7d eb
+45ce2b 7d eb
+45d026 7c03 9090
+45cc8d 7c03 9090
+45d6e8 7c03 9090
+end
+
+Start v1.07 No Stat Restrictions
+451264 7e eb
+451276 7e eb
+451288 7e eb
+45129a 7e eb
+#4511f1 7e eb
+45151d 7e eb
+45152d 7e eb
+45153d 7e eb
+45154d 7e eb
+End
+
+Start v1.07 One Handed Weapons
+41c4d7 80b87181680002754f 66c680718168000190
+End
+
+Start v1.07 No Restrictions
+41e1d3 7c28 9090
+41e1e2 7c19 9090
+41e1f1 7c0a 9090
+420525 7d eb
+420539 7d eb
+42054e 7d eb
+End
+
+Start v1.07 2 Weapons at Once
+41d419 7439 9090
+41db31 7438 9090
+41d44e 0f85 90e9
+41db65 0f85 90e9
+End
+
+Start v1.07 Eithereal Shooting
+#4194b4 01 00
+#42b57f 74 eb
+End
+
+
+start note This file was made with Calibers
+end
+
+start note .Dat file maker, downloadable at
+end
+
+start note www.Diabloworld.com
+end

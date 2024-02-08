@@ -1,0 +1,448 @@
+28 September 1998 - By Great_BoBaFeTT
+This file contains a list of the codes that are used within the trainer.
+Most of these are for Diablo 1.05, but some are also for 1.07 and other
+versions of Diablo.
+The built in hacks contains all codes that I've written.  Not a single code
+in this program for Diablo was written by anyone else but myself. 
+This is the most comprehensive cheat program available for Diablo
+for any version that I'm aware of.
+Written by : Great_BoBaFeTT aka BoBaFeTT level 37 sorcerer
+
+Before I begin, I must say that battle.net is the place on this
+planet that I've seen the most liars combined in one location.
+Only believe those who can prove what they're telling, not those
+that just talk crap.  A lot of them are very jealous of me and
+talk about virii and trojans.  They are liars and you can prove it
+by using any virus scanner you like on my software.  I even post
+on my web page the links to the virus scanners so that you can
+be protected from such nasty computer programs.  The very people
+that spread lies about me are the ones that post on their web
+pages these bad things.  I've seen so many liars on battle.net,
+it's astounding.  I've met players I've killed that won't admit
+it and will lie and say they've killed me.  I've met players
+that make up a phony ear (easy to do with this Trainer
+and a hex editor on a .itm file).  I've met players that keep
+talking about the cow level when there is no such thing.  I've
+met players that continue to say that Diablo's Plate is really
+a plate and not an ear (hacked).  I've met players who say
+they're not cheating, when they know they are with Diablo
+Hacking Utility or this program.  battle.net is a
+place where a lot of players will lie about just anything.
+I'm not saying that I'm a saint, but just be observant and you
+can find which players are telling the lies.  If a player
+cannot prove what he's telling you, then it's more than likely
+a lie.
+
+All of the hacks that are noted to have been written by me
+were in fact done this way.  If you see a hack somewhere else
+that looks identical to ones here, then more than likely,
+they have taken it from this .dat file.
+
+If you want to learn to hack, the best thing is to learn
+Intel Assembly language - Happy hacking!
+
+Explanation of the cheats used in the BoBaFeTT trainer:
+
+God Mode from players:
+This prevents a player from hurting you with any means including
+spells, hit damage, etc.
+Written by the Great BoBaFeTT on 10 June 1998
+
+God Mode from monsters:
+This prevents a monster (creature) from hurting you with any
+means including spells, hit damage, etc.
+
+Godly mana: (Like god mode but with mana shield)
+This prevents a player or creature from hurting you when
+you have mana shield on.  It also allows you to cast spells
+without losing any mana.
+
+Get All Spells:
+This is much better than "Spells to skills" because you can
+see the damage when you bring up your spell book and you get
+all spells available.  Along with the mana lock, this is the
+best combination of spells.  Some of the spells you see in
+the spell book when this is active will not do anything.
+It must be because Blizzard has them available for expansion
+in the game.
+
+Spell level 38 total:
+This is about the highest you can do damage to other players
+with fireball.  Although other spells will still work, it's
+the fireball that works the best at this level.  About the
+highest you can use for your spells is 38 because anything higher
+will prevent you from damaging other players.
+
+Allow level 1 - 99:
+This one allows you to store your level for each player from
+1 to 99.  The advantage of using this one over the next one is
+that you can have different characters at different levels and
+the levels don't change when you enter a game.
+
+Dupe items:
+Automatic duplicating of items in your INV
+All you do is pick up an item in your INV and then touch an
+empty slot and the item appears again on your cursor.
+
+Unlimited Belt:
+This allows you to use the potions on your belt and they stay
+there after it's been used.
+
+Reveal Invisibility:
+Although invisibility, ghost mode, or what Blizzard calls
+invalid players doesn't harm you, this will allow you to see
+those players that try to come into your game using that code
+
+Fastest Hit Recovery:
+When you're hit by someone or a creature, you recover the fastest
+using this one.
+
+Equip anything anywhere:
+Allows any item such as axes to be put on your ring location
+
+BoBaFeTT's Auto Kill - Heal Other:
+This does NOT harm god mode or godly mana w/mana shield on.
+The maximum Life and Mana this takes away is right at 3000 because
+Blizzard has a restriction in the amount a player can be
+damaged by another player.  In fact, I use that same restriction
+mechanism in my God Mode code to simply not be damaged regardless
+of whether it's over 3000 or not.  All you do is cast Heal Other on
+another player and this takes away the maximum damage to that
+player.  He will die instantly if he doesn't have any hacks.  hehe.
+
+Prevent Item Crash from other player:
+There is a method to crash a Diablo game by dropping an
+item that has been modified with a hex editor.  I won't tell
+how the item is modified, but this prevents your game from
+crashing by the other player when that modified item is dropped.
+This will change the bad item to a Heart that you cannot pick up.
+The Heart displays as an EAR but says "Heart" on it.
+So when you see a heart in the game with no name to it and
+you cannot pick it up, then you know the other player
+attempted to crash you with this method.
+
+Prevent right click of Item that crashes:
+If you have the item in your INV that crashes the game and
+you accidentally right click it, this will stop your game
+from crashing.
+
+Don't lose life when cast Bone Spirit:
+While I was looking into my Auto Kill God Mode players,
+I ran across a few methods to prevent yourself from losing
+life.  This is one of them.
+
+Don't lose life when touch fire:
+This is the second one so far that I found to prevent
+losing life when I was looking for my Auto Kill God Mode
+The fire mentioned here is on the crosses you see at various
+places in the game.  If you go into them, your character makes
+really funny hurting sounds and loses 1 point of Life (HP).
+This prevents that loss of 1 point which other codes don't
+prevent.  hehehe
+
+Don't lose life when cast Blood Star:
+Third one I've found while working on my Auto Kill God Mode.
+All you do is not lose any life like you would normally do when you
+cast Blood Star.
+
+Prevent loss of mana when hit Sacred shrine:
+If you accidentally hit the Sacred Shrine, this will stop your
+mana from going down.
+
+Prevent loss of a spell level when hit Enchanted Shrine:
+If you accidentally hit the Enchanted Shrine, this will stop
+the spell from going down.
+Changed on 30 March 1998 so that if you had one spell level,
+this would still work and not change it.  I found this out when
+I was making my hacks for Hellfire.  hehe.
+
+Prevent loss of durability when hit Hidden Shrine:
+This fixes the bug (still existing in 1.04) that hangs your
+computer when you have all items with indestructible durability
+and you hit the Hidden Shrine.
+Also prevents loss of durability on any item.
+
+Set Hot Keys to Spells:
+This is very useful if you use hot keys (function keys)
+for spells.  This allows you to set your hot keys automatically
+when you enter a game.  It saves on time for each time you
+enter a game.  It works by setting location 49a8ac to
+the values of the spell to hot key you want.  For example,
+I use F5 for Bone Spirit, F6 for Nova,
+F7 for Teleport and F8 for Fireball.  Blood Star=23
+Bone Spirit=24, Teleport=17, Fireball=0C
+This was written by the Great BoBaFeTT on 13 June 1998
+Just set location 49a8ac to the value of the spell for the
+Hot Key you want.  It always goes in order of F5 to F8.
+Here is the complete list of spells and their hex values that you
+would use:
+2b - Reflect
+2a - Warp
+29 - Immolation
+28 - Lightning Wall
+24 - Bone Spirit
+23 - Blood Star
+22 - Heal Other
+21 - Telekinesis
+20 - Resurrect
+1F - Holy Bolt
+1E - Charged Bolt
+1D - Elemental
+1C - Trap Disarm
+1B - Staff Recharge
+1A - Item Repair
+19 - Etherealize
+18 - Apocalypse
+17 - Teleport
+16 - Rage
+15 - Golem
+14 - Inferno
+13 - Invisibility
+12 - Nova
+11 - Blood Ritual
+10 - Doom Serpents
+0F - Flame Wave
+0E - Chain Lightning
+0D - Guardian
+0C - Fireball
+0B - Mana Shield
+0A - Phasing
+09 - Infravision
+08 - Stone Curse
+07 - Town Portal
+06 - Firwall
+05 - Identify
+04 - Flash
+03 - Lightning
+02 - Healing
+01 - Firebolt
+
+Set the current spell when enter game:
+Tired of setting the current spell when you enter each game?
+This sets it for you so that you don't have to keep setting it.
+At 49a8c6 is the number of the spell you want to set to.
+I use Infravision as my default spell so 09 is the value there.
+
+Set Player Attack on when enter game:
+This ensures that when you enter a game, your set for
+Player Attack instead of Player Friendly.
+
+Set map on when enter game:
+This will automatically set your map on
+(name of the game and password displayed automatically)
+So you don't have to press TAB each time you enter a game.
+
+Pick up extended ASCII ears:
+This will allow you to pick up Extended ASCII ears!
+Now those idiots that use Extended ASCII in their names
+can't prevent you from getting their ear!  hehe!
+
+Always have Rogue's ability to see traps:
+This allows a Sorcerer or Warrior to see that a box
+has a trap just like the Rogue can.
+
+Display Dungeon Level of player when speak:
+This is really cool.  Written by the Great BoBaFeTT on 10 June 1998
+This hack will display the dungeon level of the player when they
+type instead of character's level.
+This is excellent for PK's.
+
+BoBaFeTT's Editor:
+This is a simple editor that does everything you need to truly kill anyone on battle.net
+Works in both Windows 95 and Windows NT as all my hacks for Diablo do.
+/0	will turn the picked up ear into that of player 0 - With a real ear that can be picked up
+/1	will turn the picked up ear into that of player 1 - and level matches and class matches
+/2	will turn the picked up ear into that of player 2 - correctly.  You will see the graphic
+/3	will turn the picked up ear into that of player 3 - change when you drop it in your INV or ground
+/c	will turn the picked up item to a crash item - New method of crash - others have no protection
+
+BoBaFeTT's AK Everyone - Blood Star:
+The moment you enter a level and you execute blood star with this active,
+all players without god mode or godly mana with mana shield on will
+die unless they have very high life or mana.  It doesn't matter where
+they are on the level!  This is a VERY good way of finding out if
+the other player is using God Mode before they have a chance to hit you.
+The maximum life and mana this takes away is about 2900 because
+Blizzard has some restriction in the amount a player can be
+damaged by another player
+
+Prevent stats modification when other player hits Shrine:
+Fourth one found while working on Auto Kill God Mode
+Some shrines like the Tainted Shrine will cause your stats
+to change when another player hits them.  This stops that.
+
+Prevent 2nd type of item crash:
+There are two ways of crashing the game with an invalid item.
+This prevents the second method from crashing your game.  The second
+method actually uses a number for the item which results in 0 for
+the index to the display of the name for the item.  To prevent you
+from crashing, you will see text in the item as "Bounty Hunter"
+or "Deadly Hunter" so you'll know it was a bad item that would have
+crashed your game.  The problem is that should you pick up that item,
+you will have it with you until you reload another character.
+Even if you drop the bad item, for some reason, it stays with you and
+you will in turn, crash other players games.  To stop crashing
+others, you must load in another character with a trainer or use
+a restore of the multi-player character file.
+This works in both Windows 95 and Windows NT
+
+Change name of your dropped ear:
+This will change the name of your ear dropped when you die.
+You can make it anything you want.  Including no name at all
+or Extended ASCII.  Just change the hex staring at 4b0f48.
+Pad with 00's if you're making the text shorter.  The last
+character on that line in this dat doesn't have to be 00 because
+the next character in memory is 00.
+You're limited to 15 characters with this hack.  If you make
+it longer than that, you may crash.
+
+Auto Kill God Mode:
+My famous God Mode Kill
+This uses the Bone Spirit spell to kill god mode players in the
+game.  All you have to do is cast the spell and when it hits the
+player, they are dead no matter what cheats they have on.
+NOTE: For this to work, YOU MUST HAVE the AK Everyone - Blood Star hack turned on!
+You must also have certain items in your INV.  Don't send a message
+to me about what the items are.  You will need to figure this out
+on your own.  I'm not going to tell you.  If I did, everyone would know.
+
+Anti -_Soulburner_- crash #2
+Along with the other crash prenvention codes, this will prevent
+ALL known crash methods in your game by other players.
+HAHAHAHA - -_Soulburner_- is history with his puny little hacks
+Next time dude, write something a little more difficult to
+crack.  This shows how easy your stuff is to crack.  When you
+start writing games, I'll crack into all of them and give them
+all to my friends and post them on the Internet!
+This was written by the Great BoBaFeTT on 25 July 1998
+Modified on 7 August 1998 for -_Soulburner_-'s foolish attempts
+
+Invisibility (Ghost Mode) - No harm to other players:
+Although you can't harm other players, they won't know
+you're there when this is activated!
+
+Allow Duplicate Items in Game:
+This still gives other players the message that a duplicate
+item has been deleted.
+not complete, you can only pick up duplicate item if it is
+already equipped, not in inventory
+
+Leech - Make others think you're dead:
+Your HP can go to 0, but you won't die.
+Also known as Walking Corpse Mode
+Unlike ghost mode, you can do damage to other players
+while invisible using this hack.  Players will not see you
+if they were not on your level when you died to activate,
+kill yourself you may not change levels once you activate
+this hack.  This is also known as walking corpse
+
+Townspell (Townkill) no player damage:
+Although you can teleport around town you cannot do any damage
+to other players unless they have this turned on as well.
+Other players will get a message "xxx cast an illegal spell" and
+they'll immediately know you're cheating when you use it.
+The best thing is to not use it at all.  Blizzard did a great
+job on removing Townkill in 1.03, 1.04, 1.05 and 1.07.
+
+Spells to Skills:
+Because you're using All Spells and Mana Lock, you really
+don't need this.  In addition, if you use this, you can't
+see the damage your spells do in the spell book.
+
+Unlimited (95000) gold (Shows up in Diablo's eye):
+I don't recommend this because Diablo's Eye shows
+you're cheating in chat
+
+Prevent 3rd type of item crash
+There is yet another method of crashing a game with an
+item and this prevents that method of crashing the game.
+This was written by the Great BoBaFeTT on 4 October 1998
+
+Prevent Crash With Msg:1 Error
+This prevents your game from crashing when someone tries
+this in a multiplayer game.
+
+Prevent Crash If You Leave The Level
+This prevents your game from crashing when someone tries
+to crash you while in a multiplayer game and you leave
+the level.
+
+Prevent Crash Because Of Spell Crashes
+This is a patch that prevents your game from crashing
+when someone tries to do the spell crash on you in
+a multiplayer game.
+
+Prevent Crash Because Of The Res Crash
+This is a patch that prevents your game from crashing
+when someone tries to do the Res crash on you in
+a multiplayer game.
+
+Prevent Crash Because Of Too Many Items
+If you have too many items in your INV, you will crash
+sometimes.  This prevents that from happening.
+
+You Can Attack In Town
+This is NOT town Kill.  This just allows you to attack
+another player while in town.
+
+Join Game By The Fountain
+When you start the game either by joining or by creating
+one, you start in the middle of town instead of at the
+bottom.
+
+Always See Monster Hit Points
+Some monsters you won't see the hit points for.  This
+allows you to always see them.
+
+Always See Monster Resistances
+Some monsters you won't see the resistance for.  This
+allows you to always see it.
+
+Walk Through Walls
+This really should be called "Walk through everything"
+because it allows you to walk anywhere on the map in
+town or in the dungeon.
+
+Finish Game(kill any monster)
+Kill any monster then boom u killed diablo and go to cutscene!
+You get the dots too.  hehe.
+
+Play Diablo/Hellfire off your HD
+------------------------------------------------------------
+				Instructions
+     1. BoBaFeTT's NOTE: THIS CRACK WORKED JUST FINE FOR ME WITHOUT COPYING
+        THE ORIGINAL STORM.DLL FILE; THESE INSTRUCTIONS ARE PRESERVED IN THEIR
+        ORIGINAL STATE, WITH MINOR MODIFICATIONS FOR ARCHIVAL PURPOSES ONLY: 
+        THE INSTRUCTIONS FOLLOWING ARE ESSENTIAL FOR THE CRACK TO WORK PROPERLY: 
+
+     2. Copy the file DIABDAT.MPQ (520Mb) to the ROOT DIRECTORY of 
+        any drive (i.e. C:\).
+     3. Run the program REGEDIT.
+     4. Once you get into REGEDIT, move down throught the tree:
+
+ HKEY_LOCAL_MACHINE 
+ SOFTWARE 
+ Blizzard Entertainment 
+ Archives 
+
+	5. Open the Archives folder. On the right side you will see:
+
+ (default) 
+ DiabloCD 
+ DiabloInstall 
+
+	6. Just change the "DiabloCD" value by highlighting, selecting 
+	   Edit/Modify (BoBaFeTT's NOTE, DOUBLE CLICKING ON THE "DiabloCD" VALUE
+        WILL ALSO OPEN A WINDOW WITHIN WHICH YOU CAN MAKE THIS MODIFICATION), 
+        then just put where the DIABDAT.MPQ is located (i.e. C:\).
+	7. Now run Diablo wihtout the CD in.
+     8. When it asks for the CD, switch over to Diablo Hacking Utility,
+        and open this dat-file.
+     9. Now, activate the "Play Diablo/Hellfire off hard drive" option.
+     10. Switch back to the game and click OKAY on the screen where it 
+	    asks you for the CD.
+------------------------------------------------------------
+
+Great_BoBaFeTT@hotmail.com
+http://www.greatbobafett.com
+

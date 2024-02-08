@@ -1,0 +1,155 @@
+start Comment ---God Modes---
+end
+
+start v1.08 Regular GodMode
+# Converted by Doom-Gaze
+44013d 77 eb
+end
+
+start v1.08 God Mode from Monsters(not spells)
+# Converted by Doom-Gaze
+435AA4 75 eb
+42adb2 75 eb
+end
+
+start v1.08 Godly Mana
+# Converted by Doom-Gaze
+458db8 e8e2 5ec3
+end
+
+start v1.08 Infinite Mana Sheild
+# Converted by Doom-Gaze
+42f93E 02 00
+end
+
+start v1.08 Levi's 1 Point Stand 
+#created by Levi
+#converted by Doom-Gaze
+44ec89 7513 eb09
+end
+
+start Comment ---Item&Gold---
+end
+
+start v1.08 autodupe
+# Converted by Doom-Gaze
+41DBEE ff 00
+end
+
+start v1.08 Unlimited Belt
+# Converted b Doom-Gaze
+41e024 838c32d8cb6800ff 9090909090909090
+end
+
+start v1.08 No Drops At Death
+# Converted by Doom-Gaze
+44e5ff 0f85 90e9
+44e5e1 7c eb
+end
+
+start Comment ---Level Hacks---
+end
+
+start v1.08 Full Map
+# Converted by Doom-Gaze
+402e1f 75 eb
+end
+
+start v1.08 Doom-Gaze's Level Teller
+# Created by Doom-Gaze!! (1.08-6/15/00)
+402f15 a07ed15b0084c0742b0fb6c0508d8500ffffff 68cba14700c381c1d885680052512d00010000
+402f35 0c 10
+402f49 5ec9 33d2
+485b10 4c6576656c3a20256900 25733A20256400000000
+47a1cb 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 33c9b1048bd94969c9d854000080b9d88568000074110fbe91cc8468008bc5e82c8Df8ff83c60f8bcbe2d94B5ec9c3
+end
+
+Start v1.08 Map Player Locator
+# Converted by Doom-Gaze
+401fe4 75 eb
+404cad 75 eb
+4029d7 8b1d9484680069dbd8540000 b80000000090e88684010090
+41ae68 740d50e88205050083252c6d630000a1146a630085c0740d50e86c0505008325146a630000e864040500e84eb5ffffe8b4dc0300e8d8680200e8d3aeffff8b 89c769ffd85400003b0574776800742080bfd885680000740e8b8fcc8468003b0d7ed15b007409403c04720231c0ebd0403c04720231c0a2d82940008bdfc3
+End
+
+start v1.08 Get into any level
+# Converted by Doom-Gaze
+464745 7d eb
+464764 7d eb
+464783 7d eb
+end
+
+start Comment ---"Fixes"---
+end
+
+start v1.08 Super Fastest Hit Recovery
+# Converted by Doom-Gaze
+44e1fe 53558b c20400
+end
+
+start v1.08 Unlimited Staff Charges
+# Converted by Doom-Gaze
+41F4F4 4a 90
+end
+
+Start v1.08 View Monster HP and Resist
+# Converted by Doom-Gaze
+43b0f3 68 00
+43b15f 0f8cfc000000 909090909090
+End
+
+start Comment ---Misc.---
+end
+
+start v1.08 You light up the Room
+# Converted by Doom-Gaze
+41fdd1 03 00
+41fddc 03 00
+end
+
+start v1.08 Telewalk
+# Converted by Doom-Gaze
+44f15b 0f85f3000000 909090909090
+44f2d5 0f85cd000000 909090909090
+44f429 0f8507010000 909090909090
+end
+
+start v1.08 Machine Gun Arrows & Spells
+# Converted by Doom-Gaze
+44ff08 75 74
+44ff6e 74 75
+44ffa8 85 84
+4500EE 85 84
+4501e3 75 74
+end
+
+
+start v1.07 Prevent Ending Movie
+# By moe SAINT EverGreen (12/02/98)
+# Converted by Doom-Gaze (6/15/00)
+43680f 75 EB
+434BCF 75 EB
+end
+
+start v1.08 Play v1.08 Off HD
+# By moe SAINT EverGreen
+# [ Go to http://come.to/diablosight for more info on using this. ]
+15017e8a 74 eb
+end
+start v1.08 Megadrops
+#Higher chance of monsters dropping an item(even crappy monsters)
+422b24 75 EB
+end
+
+start v1.08 More Unique Drops
+#Greatly increases your chance for a unique item.
+422BE1 04 00
+end
+
+Start v1.08 Godly Golem
+# Converted by Doom-Gaze
+43919A 7507 9090
+439176 0f84ce010000 909090909090
+43921D 0f8db1000000 909090909090
+43920D 0f8dc1000000 909090909090
+end

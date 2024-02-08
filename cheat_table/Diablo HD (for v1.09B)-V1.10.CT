@@ -1,0 +1,1659 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="28">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>186</ID>
+      <Description>"Health / Mana Cheats"</Description>
+      <Options moHideChildren="1"/>
+      <LastState Value="" Activated="1" RealAddress="00000000"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>174</ID>
+          <Description>"God Mode (F5)"</Description>
+          <LastState Activated="1"/>
+          <Color>000000</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>define(dmg1,"Diablo.exe"+34AFF)
+define(dmg2,"Diablo.exe"+2A2B0)
+define(dmg3,"Diablo.exe"+2A1D5)
+define(dmg4,"Diablo.exe"+2A1DD)
+define(dmg5,"Diablo.exe"+2C208) // damage from blood star, adding a negative value
+
+[ENABLE]
+dmg1:
+  db eb
+dmg2:
+  db eb
+dmg3:
+  db eb
+dmg4:
+  db eb
+dmg5:
+  db 90 90
+
+[DISABLE]
+dmg1:
+  db 75
+dmg2:
+  db 75
+dmg3:
+  db 75
+dmg4:
+  db 75
+dmg5:
+  db 01 11
+
+</AssemblerScript>
+          <Hotkeys>
+            <Hotkey>
+              <Action>Toggle Activation</Action>
+              <Keys>
+                <Key>116</Key>
+              </Keys>
+              <ID>0</ID>
+            </Hotkey>
+          </Hotkeys>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>136</ID>
+          <Description>"No Mana Decrease (F6)"</Description>
+          <LastState/>
+          <Color>000000</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>// Credits to whitevil2
+[ENABLE]
+
+
+aobscanmodule(InfMana,Diablo.exe,29 86 F4 65 68 00) // should be unique
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+newmem:
+  pop eax
+  mov eax,[esi+Diablo.exe+2865F8]
+  mov [esi+Diablo.exe+2865F4],eax
+  mov [esi+Diablo.exe+2865ec],eax
+  push eax
+
+  jmp return
+code:
+  sub [esi+Diablo.exe+2865F4],eax
+  jmp return
+
+InfMana:
+  jmp newmem
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+return:
+registersymbol(InfMana)
+
+[DISABLE]
+
+InfMana:
+  db 29 86 F4 65 68 00 29 86 EC 65 68 00
+
+unregistersymbol(InfMana)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "Diablo.exe"+5756C
+
+"Diablo.exe"+57553: 74 12                          -  je Diablo.exe+57567
+"Diablo.exe"+57555: 48                             -  dec eax
+"Diablo.exe"+57556: 74 09                          -  je Diablo.exe+57561
+"Diablo.exe"+57558: 48                             -  dec eax
+"Diablo.exe"+57559: 75 27                          -  jne Diablo.exe+57582
+"Diablo.exe"+5755B: 5E                             -  pop esi
+"Diablo.exe"+5755C: E9 E1 76 FC FF                 -  jmp Diablo.exe+1EC42
+"Diablo.exe"+57561: 5E                             -  pop esi
+"Diablo.exe"+57562: E9 83 75 FC FF                 -  jmp Diablo.exe+1EAEA
+"Diablo.exe"+57567: E8 E2 FE FF FF                 -  call Diablo.exe+5744E
+// ---------- INJECTING HERE ----------
+"Diablo.exe"+5756C: 29 86 F4 65 68 00              -  sub [esi+Diablo.exe+2865F4],eax
+// ---------- DONE INJECTING  ----------
+"Diablo.exe"+57572: 29 86 EC 65 68 00              -  sub [esi+Diablo.exe+2865EC],eax
+"Diablo.exe"+57578: C7 05 A4 87 4B 00 01 00 00 00  -  mov [Diablo.exe+B87A4],00000001
+"Diablo.exe"+57582: 5E                             -  pop esi
+"Diablo.exe"+57583: C3                             -  ret
+"Diablo.exe"+57584: 33 C0                          -  xor eax,eax
+"Diablo.exe"+57586: 56                             -  push esi
+"Diablo.exe"+57587: 40                             -  inc eax
+"Diablo.exe"+57588: 83 7C 24 0C 00                 -  cmp dword ptr [esp+0C],00
+"Diablo.exe"+5758D: 57                             -  push edi
+"Diablo.exe"+5758E: 8B FA                          -  mov edi,edx
+}
+</AssemblerScript>
+          <Hotkeys>
+            <Hotkey>
+              <Action>Toggle Activation</Action>
+              <Keys>
+                <Key>117</Key>
+              </Keys>
+              <ID>0</ID>
+            </Hotkey>
+          </Hotkeys>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>198</ID>
+          <Description>"Infinite Mana"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>define(InfMana,"Diablo.exe"+5756C)
+
+[ENABLE]
+InfMana:
+db 90 90 90 90 90 90 90 90 90 90 90 90
+
+[DISABLE]
+InfMana:
+db 29 86 f4 65 68 00 29 86 ec 65 68 00
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>178</ID>
+          <Description>"Cast Spells without mana"</Description>
+          <LastState/>
+          <Color>000000</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>define(spellcast,"Diablo.exe"+575CB)
+
+[ENABLE]
+spellcast:
+  db 31 c9 41
+
+[DISABLE]
+spellcast:
+  db 0F 9D C1
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>176</ID>
+          <Description>"Fast Hit Recovery"</Description>
+          <LastState/>
+          <Color>000000</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>define(recover,"Diablo.exe"+4CCD8)
+
+[ENABLE]
+recover:
+  db c2 04 00
+
+[DISABLE]
+recover:
+  db 53 55 8b
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>196</ID>
+          <Description>"Max Resists (may need to equip an item)"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>define(maxresists1,"Diablo.exe"+1f6b4)
+define(maxresists2,"Diablo.exe"+1f6c0)
+define(maxresists3,"Diablo.exe"+1f6cc)
+
+[ENABLE]
+maxresists1:
+  db 90 90
+maxresists2:
+  db 90 90
+maxresists3:
+  db 90 90
+
+[DISABLE]
+maxresists1:
+  db 7e 02
+maxresists2:
+  db 7e 02
+maxresists3:
+  db 7e 02
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>188</ID>
+          <Description>"Auto Res (works best with all 3 together)"</Description>
+          <Options moActivateChildrenAsWell="1" moDeactivateChildrenAsWell="1"/>
+          <LastState Value="" RealAddress="00000000"/>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>183</ID>
+              <Description>"Auto Self Rezzing"</Description>
+              <LastState/>
+              <Color>000000</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>define(rezzing1,"Diablo.exe"+4FD72)
+define(rezzing2,"Diablo.exe"+7860d)
+
+[ENABLE]
+rezzing1:
+  db e8 96 88 02 00
+rezzing2:
+  db b8 ff ff ff 7f 3b 2d 44 64 68 00 75 12 83 3a 00 7f 0d 60 b2 1a 31 c9 41 55 e8 80 43 fc ff 61 c3
+
+[DISABLE]
+rezzing1:
+  db B8 00 F4 01 00
+rezzing2:
+  db 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>181</ID>
+              <Description>"No Drops at death (no items, no ear)"</Description>
+              <LastState/>
+              <Color>000000</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>define(nodrop1,"Diablo.exe"+4D08B)
+define(nodrop2,"Diablo.exe"+4D0A9)
+define(nodrop3,"Diablo.exe"+4D0BA)
+
+[ENABLE]
+nodrop1:
+  db eb
+nodrop2:
+  db 90 e9
+nodrop3:
+  db 90 e9
+
+[DISABLE]
+nodrop1:
+  db 7c
+nodrop2:
+  db 0F 85
+nodrop3:
+  db 0F 84
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>189</ID>
+              <Description>"Resurrect With Full Life And Mana (combine With auto self res &amp; no drops on death)"</Description>
+              <LastState/>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>define(resfullhpmana1,"Diablo.exe"+5776e)
+define(resfullhpmana2,"Diablo.exe"+5777d)
+define(resfullhpmana3,"Diablo.exe"+5778f)
+
+[ENABLE]
+resfullhpmana1:
+  db 90 90 90 90 90 90
+resfullhpmana2:
+  db 90 90 90 90 90 90
+resfullhpmana3:
+  db 90 90 90 90 90 90
+
+[DISABLE]
+resfullhpmana1:
+  db 2b 86 e4 65 68 00
+resfullhpmana2:
+  db 03 86 e0 65 68 00
+resfullhpmana3:
+  db 2b 86 f8 65 68 00
+</AssemblerScript>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>187</ID>
+      <Description>"Spells Cheats"</Description>
+      <Options moHideChildren="1"/>
+      <LastState Value="" RealAddress="00000000"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>165</ID>
+          <Description>"Get all Spells (Perm)"</Description>
+          <LastState/>
+          <Color>000000</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>define(allspells1,"Diablo.exe"+4fb1c)
+define(allspells2,"Diablo.exe"+4fb27)
+
+[ENABLE]
+allspells1:
+  db 33 c9 49
+allspells2:
+  db 89 08 90 90 90 89
+
+[DISABLE]
+allspells1:
+  db 8b 4d f8
+allspells2:
+  db 21 08 8b 4d fc 21
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>161</ID>
+          <Description>"add 25 to Spell-Levels (equip a new item to trigger) - temporary"</Description>
+          <LastState/>
+          <Color>000000</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>define(spells,"Diablo.exe"+1F686)
+
+[ENABLE]
+spells:
+  db b0 19 90
+
+[DISABLE]
+spells:
+  db 8A 45 C8
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>163</ID>
+          <Description>"set all Spell Levels to 65535 (equip a new item to trigger) - will give you max lvl you can use when you reset game"</Description>
+          <LastState/>
+          <Color>000000</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>define(spells1,"Diablo.exe"+4fb0b)
+define(spells2,"Diablo.exe"+039ed)
+define(spells3,"Diablo.exe"+03bba)
+define(spells4,"Diablo.exe"+04f5e)
+define(spells5,"Diablo.exe"+0685e)
+define(spells6,"Diablo.exe"+283d0)
+define(spells7,"Diablo.exe"+28aa7)
+
+[ENABLE]
+spells1:
+  db eb
+spells2:
+  db be ff ff 00 00 eb 01
+spells3:
+  db be ff ff 00 00 eb 01
+spells4:
+  db b9 ff ff 00 00 eb 01
+spells5:
+  db b9 ff ff 00 00 eb 01
+spells6:
+  db be ff ff 00 00 eb 01
+spells7:
+  db b8 ff ff 00 00 eb 01
+
+[DISABLE]
+spells1:
+  db 73
+spells2:
+  db 0f be b4 07 09 65 68
+spells3:
+  db 0f be b4 28 09 65 68
+spells4:
+  db 0f be 8c 38 09 65 68
+spells5:
+  db 0f be 8c 30 09 65 68
+spells6:
+  db 0f be b4 08 09 65 68
+spells7:
+  db 0f be 84 11 09 65 68
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>194</ID>
+          <Description>"Multi Cast/Shoot (example: shoots 8+ fireballs in 1 spell)"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>define(multcast1,"Diablo.exe"+4E91C)
+define(multcast2,"Diablo.exe"+4EAF0)
+
+[ENABLE]
+multcast1:
+  db 90 90
+multcast2:
+  db 90 90 90 90 90 90
+
+[DISABLE]
+multcast1:
+  db 75 7B
+multcast2:
+  db 0F 85 BE 00 00 00
+</AssemblerScript>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>190</ID>
+      <Description>"Speed Hacks"</Description>
+      <Options moHideChildren="1"/>
+      <LastState Value="" Activated="1" RealAddress="00000000"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>167</ID>
+          <Description>"Fast Walk"</Description>
+          <LastState/>
+          <Color>000000</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>define(walk1,"Diablo.exe"+4DBE7)
+define(walk2,"Diablo.exe"+4DD55)
+define(walk3,"Diablo.exe"+4DEA0)
+
+[ENABLE]
+walk1:
+  db b8
+walk2:
+  db b8
+walk3:
+  db b8
+
+[DISABLE]
+walk1:
+  db 86
+walk2:
+  db 86
+walk3:
+  db 86
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>191</ID>
+          <Description>"Telewalk (click and it moves you there)"</Description>
+          <LastState Activated="1"/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>define(telewalk1,"Diablo.exe"+4dbe6)
+define(telewalk2,"Diablo.exe"+4dd54)
+define(telewalk3,"Diablo.exe"+4de9f)
+define(telewalk4,"Diablo.exe"+785e8)
+define(telewalk5,"Diablo.exe"+785ee)
+define(telewalk6,"Diablo.exe"+785f0)
+define(telewalk7,"Diablo.exe"+785f6)
+
+[ENABLE]
+telewalk1:
+  db e8 fd a9 02 00 90
+telewalk2:
+  db e8 8f a8 02 00 90
+telewalk3:
+  db e8 44 a7 02 00 90
+telewalk4:
+  db 3b 1d 44 64 68 00
+telewalk5:
+  db 74 06
+telewalk6:
+  db 39 86 38 66 68 00
+telewalk7:
+  db C3
+
+[DISABLE]
+telewalk1:
+  db 39 86 38 66 68 00
+telewalk2:
+  db 39 86 38 66 68 00
+telewalk3:
+  db 39 86 38 66 68 00
+telewalk4:
+  db 00 00 00 00 00 00
+telewalk5:
+  db 00 00
+telewalk6:
+  db 00 00 00 00 00 00
+telewalk7:
+  db 00
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>180</ID>
+          <Description>"Walk Through Walls (F4 to toggle)"</Description>
+          <LastState/>
+          <Color>000000</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>define(walkthrough1,"Diablo.exe"+495B4)
+define(walkthrough2,"Diablo.exe"+495D5)
+define(walkthrough3,"Diablo.exe"+495E3)
+define(walkthrough4,"Diablo.exe"+2B203)
+define(walkthrough5,"Diablo.exe"+2BD6B)
+define(walkthrough6,"Diablo.exe"+1E249)
+define(walkthrough7,"Diablo.exe"+4FDEF)
+
+[ENABLE]
+walkthrough1:
+  db 31 c0
+walkthrough2:
+  db 31 c0
+walkthrough3:
+  db 31 c0
+walkthrough4:
+  db bf 00 00 00 00 90 90
+walkthrough5:
+  db 90 90
+walkthrough6:
+  db 90 90 90 90 90 90
+walkthrough7:
+  db 90 90 90 90 90 90
+
+[DISABLE]
+walkthrough1:
+  db 75 32
+walkthrough2:
+  db 75 11
+walkthrough3:
+  db 75 03
+walkthrough4:
+  db 0F B6 BF F0 B2 5B 00
+walkthrough5:
+  db 74 33
+walkthrough6:
+  db 0F 85 9F 00 00 00
+walkthrough7:
+  db 0F 85 9D 00 00 00
+</AssemblerScript>
+          <Hotkeys>
+            <Hotkey>
+              <Action>Toggle Activation</Action>
+              <Keys>
+                <Key>115</Key>
+              </Keys>
+              <ID>0</ID>
+            </Hotkey>
+          </Hotkeys>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>192</ID>
+      <Description>"Gold Cheats"</Description>
+      <Options moHideChildren="1"/>
+      <LastState Value="" Activated="1" RealAddress="00000000"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>193</ID>
+          <Description>"Everything Costs 0 Gold"</Description>
+          <LastState Activated="1"/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>define(nogoldneeded1,"Diablo.exe"+5bc00)
+define(nogoldneeded2,"Diablo.exe"+5b6e0)
+define(nogoldneeded3,"Diablo.exe"+5b8dd)
+define(nogoldneeded4,"Diablo.exe"+5b4b8)
+define(nogoldneeded5,"Diablo.exe"+5b6ac)
+define(nogoldneeded6,"Diablo.exe"+5ac75)
+define(nogoldneeded7,"Diablo.exe"+5adfe)
+define(nogoldneeded8,"Diablo.exe"+5b32e)
+define(nogoldneeded9,"Diablo.exe"+5bd42)
+
+[ENABLE]
+nogoldneeded1:
+  db eb
+nogoldneeded2:
+  db eb
+nogoldneeded3:
+  db eb
+nogoldneeded4:
+  db eb
+nogoldneeded5:
+  db 00
+nogoldneeded6:
+  db eb
+nogoldneeded7:
+  db eb
+nogoldneeded8:
+  db 00
+nogoldneeded9:
+  db 00
+
+[DISABLE]
+nogoldneeded1:
+  db 7d
+nogoldneeded2:
+  db 7d
+nogoldneeded3:
+  db 7d
+nogoldneeded4:
+  db 7d
+nogoldneeded5:
+  db 03
+nogoldneeded6:
+  db 7d
+nogoldneeded7:
+  db 7d
+nogoldneeded8:
+  db 03
+nogoldneeded9:
+  db 03
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>145</ID>
+          <Description>"Gold Scripts"</Description>
+          <Options moHideChildren="1" moActivateChildrenAsWell="1" moDeactivateChildrenAsWell="1"/>
+          <LastState Value="" RealAddress="00000000"/>
+          <Color>000000</Color>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>143</ID>
+              <Description>"Fill up gold stash after buying premium item"</Description>
+              <LastState/>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+aobscanmodule(goldstash,Diablo.exe,89 01 8B CE E8 C7 FD FF FF) // should be unique
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+newmem:
+  mov [ecx],#5000
+
+code:
+  mov [ecx],eax
+  mov ecx,esi
+  call Diablo.exe+5A904
+  jmp return
+
+goldstash:
+  jmp newmem
+  nop
+  nop
+  nop
+  nop
+
+return:
+registersymbol(goldstash)
+
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+goldstash:
+  db 89 01 8B CE E8 C7 FD FF FF
+
+unregistersymbol(goldstash)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "Diablo.exe"+5AB34
+
+"Diablo.exe"+5AB13: 69 C9 70 01 00 00     -  imul ecx,ecx00000170
+"Diablo.exe"+5AB19: 03 C1                 -  add eax,ecx
+"Diablo.exe"+5AB1B: 83 B8 DC 71 68 00 0B  -  cmp dword ptr [eax+Diablo.exe+2871DC],0B
+"Diablo.exe"+5AB22: 75 2F                 -  jne Diablo.exe+5AB53
+"Diablo.exe"+5AB24: 8D 88 98 72 68 00     -  lea ecx,[eax+Diablo.exe+287298]
+"Diablo.exe"+5AB2A: 8B D3                 -  mov edx,ebx
+"Diablo.exe"+5AB2C: 8B 01                 -  mov eax,[ecx]
+"Diablo.exe"+5AB2E: 3B F8                 -  cmp edi,eax
+"Diablo.exe"+5AB30: 7D 0F                 -  jnl Diablo.exe+5AB41
+"Diablo.exe"+5AB32: 2B C7                 -  sub eax,edi
+// ---------- INJECTING HERE ----------
+"Diablo.exe"+5AB34: 89 01                 -  mov [ecx],eax
+"Diablo.exe"+5AB36: 8B CE                 -  mov ecx,esi
+"Diablo.exe"+5AB38: E8 C7 FD FF FF        -  call Diablo.exe+5A904
+// ---------- DONE INJECTING  ----------
+"Diablo.exe"+5AB3D: 33 FF                 -  xor edi,edi
+"Diablo.exe"+5AB3F: EB 12                 -  jmp Diablo.exe+5AB53
+"Diablo.exe"+5AB41: 8B CE                 -  mov ecx,esi
+"Diablo.exe"+5AB43: 2B F8                 -  sub edi,eax
+"Diablo.exe"+5AB45: E8 D8 2B FC FF        -  call Diablo.exe+1D722
+"Diablo.exe"+5AB4A: 8B 35 44 64 68 00     -  mov esi,[Diablo.exe+286444]
+"Diablo.exe"+5AB50: 83 CB FF              -  or ebx,-01
+"Diablo.exe"+5AB53: 8B C6                 -  mov eax,esi
+"Diablo.exe"+5AB55: 43                    -  inc ebx
+"Diablo.exe"+5AB56: 69 C0 D8 54 00 00     -  imul eax,eax000054D8
+}
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>144</ID>
+              <Description>"Fill up gold stash after buying item"</Description>
+              <LastState/>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+aobscanmodule(goldstash2,Diablo.exe,89 01 8B CE E8 34 FE FF FF) // should be unique
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  mov [ecx],#5000
+  mov ecx,esi
+  call Diablo.exe+5A904
+  jmp return
+
+goldstash2:
+  jmp newmem
+  nop
+  nop
+  nop
+  nop
+return:
+registersymbol(goldstash2)
+
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+goldstash2:
+  db 89 01 8B CE E8 34 FE FF FF
+
+unregistersymbol(goldstash2)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "Diablo.exe"+5AAC7
+
+"Diablo.exe"+5AAAA: 83 B8 DC 71 68 00 0B           -  cmp dword ptr [eax+Diablo.exe+2871DC],0B
+"Diablo.exe"+5AAB1: 75 33                          -  jne Diablo.exe+5AAE6
+"Diablo.exe"+5AAB3: 8D 88 98 72 68 00              -  lea ecx,[eax+Diablo.exe+287298]
+"Diablo.exe"+5AAB9: 8B 01                          -  mov eax,[ecx]
+"Diablo.exe"+5AABB: 3B C5                          -  cmp eax,ebp
+"Diablo.exe"+5AABD: 74 27                          -  je Diablo.exe+5AAE6
+"Diablo.exe"+5AABF: 3B F8                          -  cmp edi,eax
+"Diablo.exe"+5AAC1: 8B D3                          -  mov edx,ebx
+"Diablo.exe"+5AAC3: 7D 0F                          -  jnl Diablo.exe+5AAD4
+"Diablo.exe"+5AAC5: 2B C7                          -  sub eax,edi
+// ---------- INJECTING HERE ----------
+"Diablo.exe"+5AAC7: 89 01                          -  mov [ecx],eax
+"Diablo.exe"+5AAC9: 8B CE                          -  mov ecx,esi
+"Diablo.exe"+5AACB: E8 34 FE FF FF                 -  call Diablo.exe+5A904
+// ---------- DONE INJECTING  ----------
+"Diablo.exe"+5AAD0: 33 FF                          -  xor edi,edi
+"Diablo.exe"+5AAD2: EB 12                          -  jmp Diablo.exe+5AAE6
+"Diablo.exe"+5AAD4: 8B CE                          -  mov ecx,esi
+"Diablo.exe"+5AAD6: 2B F8                          -  sub edi,eax
+"Diablo.exe"+5AAD8: E8 45 2C FC FF                 -  call Diablo.exe+1D722
+"Diablo.exe"+5AADD: 8B 35 44 64 68 00              -  mov esi,[Diablo.exe+286444]
+"Diablo.exe"+5AAE3: 83 CB FF                       -  or ebx,-01
+"Diablo.exe"+5AAE6: 8B C6                          -  mov eax,esi
+"Diablo.exe"+5AAE8: 43                             -  inc ebx
+"Diablo.exe"+5AAE9: 69 C0 D8 54 00 00              -  imul eax,eax000054D8
+}
+</AssemblerScript>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>201</ID>
+      <Description>"Equipment Cheats"</Description>
+      <Options moHideChildren="1" moActivateChildrenAsWell="1"/>
+      <LastState Value="" RealAddress="00000000"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>179</ID>
+          <Description>"All Weapons are One-Handed (crashes without equip two weapons for me)"</Description>
+          <LastState Activated="1"/>
+          <Color>000000</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>define(onehand,"Diablo.exe"+1BD09)
+
+[ENABLE]
+onehand:
+  db c6 80 41 6e 68 00 01 90 90
+
+[DISABLE]
+onehand:
+  db 80 B8 41 6E 68 00 02 75 4f
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>200</ID>
+          <Description>"Equip Two Weapons"</Description>
+          <LastState Activated="1"/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>define(twoweapons1,"Diablo.exe"+1cb8b)
+define(twoweapons2,"Diablo.exe"+1cc30)
+define(twoweapons3,"Diablo.exe"+1cc5e)
+
+[ENABLE]
+twoweapons1:
+  db 90 90
+twoweapons2:
+  db 90 90
+twoweapons3:
+  db 90 e9
+
+[DISABLE]
+twoweapons1:
+  db 75 14
+twoweapons2:
+  db 74 32
+twoweapons3:
+  db 0f 85
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>199</ID>
+          <Description>"Put Equipment Anywhere"</Description>
+          <LastState Activated="1"/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>define(PutEquipAnywhere,"Diablo.exe"+1c8ac)
+
+[ENABLE]
+PutEquipAnywhere:
+  db 00
+
+[DISABLE]
+PutEquipAnywhere:
+  db 07
+</AssemblerScript>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>172</ID>
+      <Description>"Other Scripts taken from the "Artemis Entreri Collection""</Description>
+      <Options moHideChildren="1"/>
+      <LastState Value="" Activated="1" RealAddress="00000000"/>
+      <Color>000000</Color>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>166</ID>
+          <Description>"One Space Per Item"</Description>
+          <LastState/>
+          <Color>000000</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>define(space1,"Diablo.exe"+07444)
+define(space2,"Diablo.exe"+785d0)
+
+[ENABLE]
+space1:
+  db e8 87 11 07 00
+space2:
+  db 6a 1c 58 8b c8 c3
+
+[DISABLE]
+space1:
+  db A3 BC 8C 4B 00
+space2:
+  db 00 00 00 00 00 00
+
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>168</ID>
+          <Description>"Freeze Monsters"</Description>
+          <LastState/>
+          <Color>000000</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>define(freeze,"Diablo.exe"+0ab96)
+
+[ENABLE]
+freeze:
+  db 90 90 90 90 90
+
+[DISABLE]
+freeze:
+  db e8 e3 e8 02 00
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>184</ID>
+          <Description>"Unlimited Staff Charges"</Description>
+          <LastState/>
+          <Color>000000</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>define(charges,"Diablo.exe"+1EC76)
+
+[ENABLE]
+charges:
+  db 90
+
+[DISABLE]
+charges:
+  db a4
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>185</ID>
+          <Description>"Unlimited Belt (items 1 thru 8, potions etc)"</Description>
+          <LastState/>
+          <Color>000000</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>define(belt,"Diablo.exe"+1D81F)
+
+[ENABLE]
+belt:
+  db 90 90 90 90 90 90 90 90
+
+[DISABLE]
+belt:
+  db 83 8C 32 88 AB 68 00 FF
+
+
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>171</ID>
+          <Description>"Ultimate Drops (higher Quality?)"</Description>
+          <LastState/>
+          <Color>000000</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>define(ultidrops,"Diablo.exe"+2225D)
+
+[ENABLE]
+ultidrops:
+  db 00
+
+[DISABLE]
+ultidrops:
+  db 04
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>173</ID>
+          <Description>"Mega Drops (= always magic)"</Description>
+          <LastState/>
+          <Color>000000</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>define(megadrops,"Diablo.exe"+22196)
+
+[ENABLE]
+megadrops:
+  db eb
+
+[DISABLE]
+megadrops:
+  db 75
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>169</ID>
+          <Description>"View Monster HP and Resists"</Description>
+          <LastState/>
+          <Color>000000</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>define(monsterstats1,"Diablo.exe"+39FC4)
+define(monsterstats2,"Diablo.exe"+3A030)
+
+[ENABLE]
+monsterstats1:
+  db 00
+monsterstats2:
+  db 90 90 90 90 90 90
+
+[DISABLE]
+monsterstats1:
+  db 68
+monsterstats2:
+  db 0F 8C F9 00 00 00
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>170</ID>
+          <Description>"See Monsters through walls/closed doors"</Description>
+          <LastState/>
+          <Color>000000</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>define(walls,"Diablo.exe"+18D4C)
+
+[ENABLE]
+walls:
+  db 00
+
+[DISABLE]
+walls:
+  db 01
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>195</ID>
+          <Description>"No Experience Gained"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>define(noexp1,"Diablo.exe"+4b708)
+
+[ENABLE]
+noexp1:
+  db 90 e9
+
+[DISABLE]
+noexp1:
+  db 0f 8e
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>197</ID>
+          <Description>"Permanent Stone Curse"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>define(permstonecurse1,"Diablo.exe"+2f89c)
+define(permstonecurse2,"Diablo.exe"+2f8df)
+
+[ENABLE]
+permstonecurse1:
+  db eb
+permstonecurse2:
+  db eb
+
+[DISABLE]
+permstonecurse1:
+  db 75
+permstonecurse2:
+  db 75
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>159</ID>
+          <Description>"Reveal Map (F3 to toggle)"</Description>
+          <LastState/>
+          <Color>000000</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(Reveal_map,Diablo.exe,75 06 39 5C 24 10) // should be unique
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+newmem:
+  jmp Diablo.exe+2E02
+
+code:
+  // jne Diablo.exe+2E02
+  cmp [esp+10],ebx
+  jmp return
+
+Reveal_map:
+  jmp newmem
+  nop
+return:
+registersymbol(Reveal_map)
+
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+Reveal_map:
+  db 75 06 39 5C 24 10
+
+unregistersymbol(Reveal_map)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "Diablo.exe"+2DFA
+
+"Diablo.exe"+2DE0: 7C 5F                    -  jl Diablo.exe+2E41
+"Diablo.exe"+2DE2: 3B F0                    -  cmp esi,eax
+"Diablo.exe"+2DE4: 7D 5B                    -  jnl Diablo.exe+2E41
+"Diablo.exe"+2DE6: 3B FB                    -  cmp edi,ebx
+"Diablo.exe"+2DE8: 7C 57                    -  jl Diablo.exe+2E41
+"Diablo.exe"+2DEA: 3B F8                    -  cmp edi,eax
+"Diablo.exe"+2DEC: 7D 53                    -  jnl Diablo.exe+2E41
+"Diablo.exe"+2DEE: 8D 04 B6                 -  lea eax,[esi+esi*4]
+"Diablo.exe"+2DF1: 8D 04 C7                 -  lea eax,[edi+eax*8]
+"Diablo.exe"+2DF4: 38 98 6C 7E 4B 00        -  cmp [eax+Diablo.exe+B7E6C],bl
+// ---------- INJECTING HERE ----------
+"Diablo.exe"+2DFA: 75 06                    -  jne Diablo.exe+2E02
+"Diablo.exe"+2DFC: 39 5C 24 10              -  cmp [esp+10],ebx
+// ---------- DONE INJECTING  ----------
+"Diablo.exe"+2E00: 75 3F                    -  jne Diablo.exe+2E41
+"Diablo.exe"+2E02: 0F B6 80 08 96 53 00     -  movzx eax,byte ptr [eax+Diablo.exe+139608]
+"Diablo.exe"+2E09: 55                       -  push ebp
+"Diablo.exe"+2E0A: 66 8B 2C 45 40 7A 4B 00  -  mov bp,[eax*2+Diablo.exe+B7A40]
+"Diablo.exe"+2E12: 66 83 FD 07              -  cmp bp,07
+"Diablo.exe"+2E16: 75 23                    -  jne Diablo.exe+2E3B
+"Diablo.exe"+2E18: 53                       -  push ebx
+"Diablo.exe"+2E19: 8D 4E FF                 -  lea ecx,[esi-01]
+"Diablo.exe"+2E1C: 8B D7                    -  mov edx,edi
+"Diablo.exe"+2E1E: E8 60 FF FF FF           -  call Diablo.exe+2D83
+}
+</AssemblerScript>
+          <Hotkeys>
+            <Hotkey>
+              <Action>Toggle Activation</Action>
+              <Keys>
+                <Key>114</Key>
+              </Keys>
+              <ID>0</ID>
+            </Hotkey>
+          </Hotkeys>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>158</ID>
+      <Description>"No Durability loss Scripts"</Description>
+      <Options moHideChildren="1" moActivateChildrenAsWell="1" moDeactivateChildrenAsWell="1"/>
+      <LastState Value="" RealAddress="00000000"/>
+      <Color>000000</Color>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>154</ID>
+          <Description>"No Durability loss - Shield"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(durability1,Diablo.exe,49 85 C9 89 08 75 1C) // should be unique
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  // dec ecx
+  test ecx,ecx
+  mov [eax],ecx
+  jmp return
+
+durability1:
+  jmp newmem
+return:
+registersymbol(durability1)
+
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+durability1:
+  db 49 85 C9 89 08
+
+unregistersymbol(durability1)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "Diablo.exe"+4EA26
+
+"Diablo.exe"+4EA07: 33 D2                 -  xor edx,edx
+"Diablo.exe"+4EA09: 42                    -  inc edx
+"Diablo.exe"+4EA0A: 8B CF                 -  mov ecx,edi
+"Diablo.exe"+4EA0C: E8 2D 13 FD FF        -  call Diablo.exe+1FD3E
+"Diablo.exe"+4EA11: 83 BE FC 6E 68 00 05  -  cmp dword ptr [esi+Diablo.exe+286EFC],05
+"Diablo.exe"+4EA18: 75 2F                 -  jne Diablo.exe+4EA49
+"Diablo.exe"+4EA1A: 8D 86 E0 6F 68 00     -  lea eax,[esi+Diablo.exe+286FE0]
+"Diablo.exe"+4EA20: 8B 08                 -  mov ecx,[eax]
+"Diablo.exe"+4EA22: 3B CB                 -  cmp ecx,ebx
+"Diablo.exe"+4EA24: 74 23                 -  je Diablo.exe+4EA49
+// ---------- INJECTING HERE ----------
+"Diablo.exe"+4EA26: 49                    -  dec ecx
+"Diablo.exe"+4EA27: 85 C9                 -  test ecx,ecx
+"Diablo.exe"+4EA29: 89 08                 -  mov [eax],ecx
+// ---------- DONE INJECTING  ----------
+"Diablo.exe"+4EA2B: 75 1C                 -  jne Diablo.exe+4EA49
+"Diablo.exe"+4EA2D: B2 05                 -  mov dl,05
+"Diablo.exe"+4EA2F: 41                    -  inc ecx
+"Diablo.exe"+4EA30: E8 7D E4 FE FF        -  call Diablo.exe+3CEB2
+"Diablo.exe"+4EA35: 83 8E FC 6E 68 00 FF  -  or dword ptr [esi+Diablo.exe+286EFC],-01
+"Diablo.exe"+4EA3C: 8B CF                 -  mov ecx,edi
+"Diablo.exe"+4EA3E: 33 D2                 -  xor edx,edx
+"Diablo.exe"+4EA40: 5F                    -  pop edi
+"Diablo.exe"+4EA41: 5E                    -  pop esi
+"Diablo.exe"+4EA42: 42                    -  inc edx
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>156</ID>
+          <Description>"No Durability loss - Weapon"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(weapon,Diablo.exe,49 85 C9 89 08 74 7A) // should be unique
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  // dec ecx
+  test ecx,ecx
+  mov [eax],ecx
+  jmp return
+
+weapon:
+  jmp newmem
+return:
+registersymbol(weapon)
+
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+weapon:
+  db 49 85 C9 89 08
+
+unregistersymbol(weapon)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "Diablo.exe"+4E017
+
+"Diablo.exe"+4DFEF: BA FF 00 00 00        -  mov edx,000000FF
+"Diablo.exe"+4DFF4: 8B AE 8C 6D 68 00     -  mov ebp,[esi+Diablo.exe+286D8C]
+"Diablo.exe"+4DFFA: 83 FD FF              -  cmp ebp,-01
+"Diablo.exe"+4DFFD: 74 1F                 -  je Diablo.exe+4E01E
+"Diablo.exe"+4DFFF: 38 9E 42 6E 68 00     -  cmp [esi+Diablo.exe+286E42],bl
+"Diablo.exe"+4E005: 75 17                 -  jne Diablo.exe+4E01E
+"Diablo.exe"+4E007: 8D 86 70 6E 68 00     -  lea eax,[esi+Diablo.exe+286E70]
+"Diablo.exe"+4E00D: 8B 08                 -  mov ecx,[eax]
+"Diablo.exe"+4E00F: 3B CA                 -  cmp ecx,edx
+"Diablo.exe"+4E011: 0F 84 9E 00 00 00     -  je Diablo.exe+4E0B5
+// ---------- INJECTING HERE ----------
+"Diablo.exe"+4E017: 49                    -  dec ecx
+"Diablo.exe"+4E018: 85 C9                 -  test ecx,ecx
+"Diablo.exe"+4E01A: 89 08                 -  mov [eax],ecx
+// ---------- DONE INJECTING  ----------
+"Diablo.exe"+4E01C: 74 7A                 -  je Diablo.exe+4E098
+"Diablo.exe"+4E01E: 83 BE FC 6E 68 00 FF  -  cmp dword ptr [esi+Diablo.exe+286EFC],-01
+"Diablo.exe"+4E025: 74 2D                 -  je Diablo.exe+4E054
+"Diablo.exe"+4E027: 38 9E B2 6F 68 00     -  cmp [esi+Diablo.exe+286FB2],bl
+"Diablo.exe"+4E02D: 75 25                 -  jne Diablo.exe+4E054
+"Diablo.exe"+4E02F: 8D 86 E0 6F 68 00     -  lea eax,[esi+Diablo.exe+286FE0]
+"Diablo.exe"+4E035: 8B 08                 -  mov ecx,[eax]
+"Diablo.exe"+4E037: 3B CA                 -  cmp ecx,edx
+"Diablo.exe"+4E039: 74 7A                 -  je Diablo.exe+4E0B5
+"Diablo.exe"+4E03B: 49                    -  dec ecx
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>157</ID>
+          <Description>"No Durability loss - Armor/Helmet"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(Armor,Diablo.exe,49 85 C9 89 0A) // should be unique
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  // dec ecx
+  test ecx,ecx
+  mov [edx],ecx
+  jmp return
+
+Armor:
+  jmp newmem
+return:
+registersymbol(Armor)
+
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+Armor:
+  db 49 85 C9 89 0A
+
+unregistersymbol(Armor)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "Diablo.exe"+4ED4E
+
+"Diablo.exe"+4ED2A: 33 C0              -  xor eax,eax
+"Diablo.exe"+4ED2C: 85 C0              -  test eax,eax
+"Diablo.exe"+4ED2E: 74 08              -  je Diablo.exe+4ED38
+"Diablo.exe"+4ED30: 81 C6 1C 0C 00 00  -  add esi,00000C1C
+"Diablo.exe"+4ED36: EB 06              -  jmp Diablo.exe+4ED3E
+"Diablo.exe"+4ED38: 81 C6 7C 03 00 00  -  add esi,0000037C
+"Diablo.exe"+4ED3E: 8D 96 EC 00 00 00  -  lea edx,[esi+000000EC]
+"Diablo.exe"+4ED44: 8B 0A              -  mov ecx,[edx]
+"Diablo.exe"+4ED46: 81 F9 FF 00 00 00  -  cmp ecx,000000FF
+"Diablo.exe"+4ED4C: 74 28              -  je Diablo.exe+4ED76
+// ---------- INJECTING HERE ----------
+"Diablo.exe"+4ED4E: 49                 -  dec ecx
+"Diablo.exe"+4ED4F: 85 C9              -  test ecx,ecx
+"Diablo.exe"+4ED51: 89 0A              -  mov [edx],ecx
+// ---------- DONE INJECTING  ----------
+"Diablo.exe"+4ED53: 75 21              -  jne Diablo.exe+4ED76
+"Diablo.exe"+4ED55: 41                 -  inc ecx
+"Diablo.exe"+4ED56: 85 C0              -  test eax,eax
+"Diablo.exe"+4ED58: 74 04              -  je Diablo.exe+4ED5E
+"Diablo.exe"+4ED5A: B2 06              -  mov dl,06
+"Diablo.exe"+4ED5C: EB 02              -  jmp Diablo.exe+4ED60
+"Diablo.exe"+4ED5E: 32 D2              -  xor dl,dl
+"Diablo.exe"+4ED60: E8 4D E1 FE FF     -  call Diablo.exe+3CEB2
+"Diablo.exe"+4ED65: 89 5E 08           -  mov [esi+08],ebx
+"Diablo.exe"+4ED68: 33 D2              -  xor edx,edx
+}
+</AssemblerScript>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>155</ID>
+      <Description>"Equipment Durability"</Description>
+      <Options moHideChildren="1"/>
+      <LastState Value="" RealAddress="00000000"/>
+      <Color>000000</Color>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>2</ID>
+          <Description>"Weapon Current"</Description>
+          <LastState Value="32" RealAddress="00686E70"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>Diablo.exe+286E70</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1</ID>
+          <Description>"Weapon Maximum"</Description>
+          <LastState Value="32" RealAddress="00686E74"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>Diablo.exe+286E74</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>4</ID>
+          <Description>"Armor Current"</Description>
+          <LastState Value="21" RealAddress="00687150"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>Diablo.exe+287150</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>5</ID>
+          <Description>"Armor Maximum"</Description>
+          <LastState Value="24" RealAddress="00687154"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>Diablo.exe+287154</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>151</ID>
+          <Description>"Shield Current"</Description>
+          <LastState Value="15" RealAddress="00686FE0"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>Diablo.exe+286FE0</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>152</ID>
+          <Description>"Shield Maximum"</Description>
+          <LastState Value="16" RealAddress="00686FE4"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>Diablo.exe+286FE4</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>0</ID>
+          <Description>"Helmet  Current"</Description>
+          <LastState Value="0" RealAddress="006868B0"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>Diablo.exe+2868B0</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>153</ID>
+          <Description>"Helmet Maximum"</Description>
+          <LastState Value="0" RealAddress="006868B4"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>Diablo.exe+2868B4</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>160</ID>
+      <Description>"XP-Multiplier (500%)"</Description>
+      <LastState/>
+      <Color>000000</Color>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+aobscanmodule(xpinc,Diablo.exe,01 38 8B 10 5F) // should be unique
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+newmem:
+  add [eax],edi
+  add [eax],edi
+  add [eax],edi
+  add [eax],edi
+  add [eax],edi
+
+code:
+  add [eax],edi
+  mov edx,[eax]
+  pop edi
+  jmp return
+
+xpinc:
+  jmp newmem
+return:
+registersymbol(xpinc)
+
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+xpinc:
+  db 01 38 8B 10 5F
+
+unregistersymbol(xpinc)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "Diablo.exe"+4B78A
+
+"Diablo.exe"+4B76B: F7 FB                    -  idiv ebx
+"Diablo.exe"+4B76D: 3B F8                    -  cmp edi,eax
+"Diablo.exe"+4B76F: 7C 02                    -  jl Diablo.exe+4B773
+"Diablo.exe"+4B771: 8B F8                    -  mov edi,eax
+"Diablo.exe"+4B773: 69 C9 C8 00 00 00        -  imul ecx,ecx000000C8
+"Diablo.exe"+4B779: 3B F9                    -  cmp edi,ecx
+"Diablo.exe"+4B77B: 7C 02                    -  jl Diablo.exe+4B77F
+"Diablo.exe"+4B77D: 8B F9                    -  mov edi,ecx
+"Diablo.exe"+4B77F: 8D 86 04 66 68 00        -  lea eax,[esi+Diablo.exe+286604]
+"Diablo.exe"+4B785: B9 00 94 35 77           -  mov ecx,ucrtbase.dll+79400
+// ---------- INJECTING HERE ----------
+"Diablo.exe"+4B78A: 01 38                    -  add [eax],edi
+"Diablo.exe"+4B78C: 8B 10                    -  mov edx,[eax]
+"Diablo.exe"+4B78E: 5F                       -  pop edi
+// ---------- DONE INJECTING  ----------
+"Diablo.exe"+4B78F: 3B D1                    -  cmp edx,ecx
+"Diablo.exe"+4B791: 5B                       -  pop ebx
+"Diablo.exe"+4B792: 76 02                    -  jna Diablo.exe+4B796
+"Diablo.exe"+4B794: 89 08                    -  mov [eax],ecx
+"Diablo.exe"+4B796: 8B 00                    -  mov eax,[eax]
+"Diablo.exe"+4B798: 3B 05 18 11 4A 00        -  cmp eax,[Diablo.exe+A1118]
+"Diablo.exe"+4B79E: 7C 09                    -  jl Diablo.exe+4B7A9
+"Diablo.exe"+4B7A0: C6 86 00 66 68 00 32     -  mov byte ptr [esi+Diablo.exe+286600],32
+"Diablo.exe"+4B7A7: EB 4A                    -  jmp Diablo.exe+4B7F3
+"Diablo.exe"+4B7A9: 33 C9                    -  xor ecx,ecx
+}
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>115</ID>
+      <Description>"Character Attributes"</Description>
+      <Options moHideChildren="1"/>
+      <LastState Value="" RealAddress="00000000"/>
+      <Color>000000</Color>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>108</ID>
+          <Description>"Experience Points (press F2 for Lvl Up)"</Description>
+          <DropDownList>1583495809:Max/LvlUp
+</DropDownList>
+          <LastState Value="157934" RealAddress="00686604"/>
+          <Color>000000</Color>
+          <VariableType>4 Bytes</VariableType>
+          <Address>Diablo.exe+286604</Address>
+          <Hotkeys>
+            <Hotkey>
+              <Action>Set Value</Action>
+              <Keys>
+                <Key>113</Key>
+              </Keys>
+              <Value>1583495809 </Value>
+              <Description>Set XP to Lvl up</Description>
+              <ID>0</ID>
+            </Hotkey>
+          </Hotkeys>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>116</ID>
+          <Description>"Strength (Current)"</Description>
+          <LastState Value="19" RealAddress="006865AC"/>
+          <Color>000000</Color>
+          <VariableType>4 Bytes</VariableType>
+          <Address>Diablo.exe+2865AC</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>111</ID>
+          <Description>"Strength (Base Value)"</Description>
+          <LastState Value="16" RealAddress="006865B0"/>
+          <Color>000000</Color>
+          <VariableType>4 Bytes</VariableType>
+          <Address>Diablo.exe+2865B0</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>113</ID>
+          <Description>"Magic (Current)"</Description>
+          <LastState Value="126" RealAddress="006865B4"/>
+          <Color>000000</Color>
+          <VariableType>4 Bytes</VariableType>
+          <Address>Diablo.exe+2865B4</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>112</ID>
+          <Description>"Magic (Base-Value)"</Description>
+          <LastState Value="98" RealAddress="006865B8"/>
+          <Color>000000</Color>
+          <VariableType>4 Bytes</VariableType>
+          <Address>Diablo.exe+2865B8</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>117</ID>
+          <Description>"Dexterity (Base-Value)"</Description>
+          <LastState Value="12" RealAddress="006865BC"/>
+          <Color>000000</Color>
+          <VariableType>4 Bytes</VariableType>
+          <Address>Diablo.exe+2865BC</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>118</ID>
+          <Description>"Dexterity (Current)"</Description>
+          <LastState Value="15" RealAddress="006865C0"/>
+          <Color>000000</Color>
+          <VariableType>4 Bytes</VariableType>
+          <Address>Diablo.exe+2865C0</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>119</ID>
+          <Description>"Vitality (Base-Value)"</Description>
+          <LastState Value="19" RealAddress="006865C4"/>
+          <Color>000000</Color>
+          <VariableType>4 Bytes</VariableType>
+          <Address>Diablo.exe+2865C4</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>120</ID>
+          <Description>"Vitality (Current)"</Description>
+          <LastState Value="19" RealAddress="006865C8"/>
+          <Color>000000</Color>
+          <VariableType>4 Bytes</VariableType>
+          <Address>Diablo.exe+2865C8</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>109</ID>
+          <Description>"Attribute Points to spent"</Description>
+          <LastState Value="0" RealAddress="006865CC"/>
+          <Color>000000</Color>
+          <VariableType>4 Bytes</VariableType>
+          <Address>Diablo.exe+2865CC</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>125</ID>
+      <Description>"Other Addresses"</Description>
+      <Options moHideChildren="1"/>
+      <LastState Value="" RealAddress="00000000"/>
+      <Color>000000</Color>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>126</ID>
+          <Description>"Health (encrypted, just freeze me ^^)"</Description>
+          <LastState Value="2624" RealAddress="006865E0"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>Diablo.exe+2865E0</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>132</ID>
+          <Description>"Mana (encrypted, just freeze me^^)"</Description>
+          <LastState Value="17127" RealAddress="006865F4"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>Diablo.exe+2865F4</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>123</ID>
+          <Description>"Current Health (Mirror/Base)"</Description>
+          <LastState Value="2624" RealAddress="006865D8"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>Diablo.exe+2865D8</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>124</ID>
+          <Description>"Max Health 1"</Description>
+          <LastState Value="2624" RealAddress="006865DC"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>Diablo.exe+2865DC</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>122</ID>
+          <Description>"Max Health 2"</Description>
+          <LastState Value="2624" RealAddress="006865E4"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>Diablo.exe+2865E4</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>101</ID>
+          <Description>"Amount of Gold (summed up, read-only)"</Description>
+          <LastState Value="0" RealAddress="00686614"/>
+          <VariableType>8 Bytes</VariableType>
+          <Address>Diablo.exe+286614</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>137</ID>
+          <Description>"Gold Stash 1 - sometimes"</Description>
+          <LastState Value="800" RealAddress="00687298"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>Diablo.exe+287298</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>140</ID>
+          <Description>"Gold Stash 2 - sometimes"</Description>
+          <LastState Value="500" RealAddress="00687578"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>Diablo.exe+287578</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>175</ID>
+          <Description>"Spell-Level Firebolt (e.g.:set to 080F000 for 65560)"</Description>
+          <LastState Value="0F0C0000" RealAddress="00686508"/>
+          <ShowAsHex>1</ShowAsHex>
+          <VariableType>4 Bytes</VariableType>
+          <Address>Diablo.exe+286508</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+  </CheatEntries>
+  <CheatCodes>
+    <CodeEntry>
+      <Description>Change of jmp Diablo.exe+ABC5</Description>
+      <AddressString>Diablo.exe+ABB4</AddressString>
+      <Before>
+        <Byte>E8</Byte>
+        <Byte>77</Byte>
+        <Byte>B8</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>EB</Byte>
+        <Byte>0F</Byte>
+      </Actual>
+      <After>
+        <Byte>E8</Byte>
+        <Byte>BB</Byte>
+        <Byte>5F</Byte>
+        <Byte>05</Byte>
+        <Byte>00</Byte>
+      </After>
+    </CodeEntry>
+  </CheatCodes>
+  <UserdefinedSymbols>
+    <SymbolEntry>
+      <Name>HeroAdr</Name>
+      <Address>00DA0010</Address>
+    </SymbolEntry>
+  </UserdefinedSymbols>
+  <Comments>Info about this table:
+</Comments>
+</CheatTable>

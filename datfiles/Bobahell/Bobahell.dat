@@ -1,0 +1,589 @@
+# 28 March 1998.
+# All of these hacks for Hellfire were written by the Great BoBaFeTT except
+# those noted by Soulburner.  The last
+# three hacks were were taken from another file that should have been
+# put in a .hak file.  For some reason, somebody is trying to get
+# credit for modifying Diablo Hacking Utility specifically made for HellFire.
+# This is stupid because all they had to do was put in the hacks into a
+# .hak file to be used with Game Hack which was written by the same person
+# that wrote DiabHack.
+#**************************************************************************
+# Locate-by Definition
+# ====================
+#
+# locateby windowname <window-name>
+# locateby classname <window-class-name>
+# locateby procid <process-id>
+# locateby picker
+# 
+# Hack Definition
+# ===============
+#
+# start <version> <description>
+# <offset> <olddata> <newdata>
+# .
+# .
+# end
+#
+# Note: <offset>, <olddata> and <newdata> must be specified in hex,
+#       without a "0x" prefix
+#
+#       <olddata> and <newdata> must be the same length and a multiple
+#       of two (add leading zero if necessary).
+#
+#       All words are delimited with whitespace (Space or Tab).
+#
+#       Multiple words can be combined as a single entity (for the
+#       hack description for example) by enclosing then within quotes
+#       (" or ').
+#
+#       Comment lines are those beginning with '#' or ';'.
+#
+#**************************************************************************
+
+#locateby windowname "HellFire"
+
+#****************************************************************
+# Constructed by : BoBaFeTT level 37 sorcerer
+#
+# Before I begin, I must say that battle.net is the place on this
+# planet that I've seen the most liars combined in one location.
+# Only believe those who can prove what they're telling, not those
+# that just talk crap.  I've seen so many liars on battle.net,
+# it's astounding.  I've met players I've killed that won't admit
+# it and will lie and say they've killed me.  I've met players
+# that make up a phony ear (easy to do with Hacker Diablo Trainer
+# and a hex editor on a .itm file).  I've met players that keep
+# talking about the cow level when there is no such thing.  I've
+# met players that continue to say that Diablo's Plate is really
+# a plate and not an ear (hacked).  I've met players who say
+# they're not cheating, when they know they are with Diablo
+# Hacking Utility or Raymonds Diablo Trainer.  battle.net is a
+# place where a lot of players will lie about just anything.
+# I'm not saying that I'm a saint, but just be observant and you
+# can find which players are telling the lies.  If a player
+# cannot prove what he's telling you, then it's more than likely
+# a lie.
+#
+# It's really easy to convert codes from a prior version of Diablo
+# to a new version.  Here's how...and anyone with knowledge of Soft-ICE
+# can do it!  Other dats will say they've done these codes and
+# some were probably really done by them and they say that if you
+# see the codes, it was taken from their dat file.  That's
+# garbage!  If you know how to use Soft-ICE's search facility
+# really well, you can convert the codes to 1.04 yourself!
+# All you have to do is find the bytes around the location from
+# 1.03 and search for those bytes in 1.04.  It can be tricky
+# sometimes, but with patience, all of the codes can be converted
+# in about 1 hour!  What the others won't tell you is what I've
+# just told you; and that's how to develop your own codes from the
+# codes in the previous version.  So when 1.05 comes out (if there
+# ever will be another version), then you can use Soft-ICE and
+# find the codes in this .dat file by loading in 1.04 of Diablo
+# and searching for the bytes before and after the strings in this
+# .dat.  Then load in 1.05 (or whatever new version of Diablo is
+# next) and search for those strings.  You should only find one
+# occurence.  If you find more, you'll have to increase the search
+# size by looking for more bytes from 1.04, or write down all of
+# the occurences and test out the strings to ensure they work as
+# you would have expected.  It's very simple if you know
+# Hexadecimal editing.  It requires no assembler knowledge.  Intel
+# assembler knowledge is only required if you want to make new
+# codes that are not available from a prior .dat file.
+# Although they basically do the same thing as the Diablo 1.00
+# versions, there is considerable changes in the execution of the
+# code.  Blizzard may fix Diablo so that some of the codes are not
+# convertible to another release.  You just have to keep that in
+# mind when you do your searching.  Of course Diablo II is going to
+# be completely different so don't expect any codes from Diablo 1.04
+# to be converted to Diablo II.  ...the best thing is to learn
+# Intel Assembly language if you really want to be able to hack
+# programs or games.  Happy hacking!
+#
+# When Blizzard makes a new release of Diablo, none of the
+# following codes will work and the long ones will
+# not be easily transferrable unless the person knows Intel
+# Assembly language.
+#Thanks to Jafo, Funky Chen and the authors
+#of the Diablo hacks, as well as Andy Duplain
+# http://www.trojanco.demon.co.uk/index.htm
+
+start V1.01 "Hellfire.hak by the Great BoBaFeTT v1.0
+end
+
+# Written by the Great BoBaFeTT on 28 March 1998
+start V1.01 "God Mode from players
+44995e 2930 9090
+449974 298c30 909090
+449978 010000 909090
+end
+
+# Written by the Great BoBaFeTT on 28 March 1998
+start V1.01 "God Mode from Monsters
+42f933 75 eb
+42fa08 75 eb
+43e4ff 0f8591000000 e99200000090
+end
+
+# Written by the Great BoBaFeTT on 28 March 1998
+start V1.01 "Godly Mana and Unlimited mana shield
+46c003 75 eb
+437b7c 02 00
+end
+
+# Written by the Great BoBaFeTT on 28 March 1998
+start V1.01 "Allow levels up to 99
+45d8f4 7e eb
+end
+
+# The following code was written by the Great BoBaFeTT for hellfire 1.01
+# Written on 29 March 1998.
+# If you're interested in what it does, it basically changes the instruction
+# instead of moving in FFFFFFFF to the location in the players space for the
+# inventory, it moves in 00000000.  How does it accomplish this from the code
+# below?  Well, if you look at the assembly code of this, you'll see the
+# instruction: mov dword ptr [ecx+53ac], ebx at location 420a47.  I change this
+# to: and dword ptr [ecx+53ac], 00
+# That simply makes the location to 0 instead of FFFFFFFF which is in EBX
+# before you get to that instruction.  This works exactly the same as it did
+# with Diablo.
+# Written by the Great BoBaFeTT on 29 March 1998.
+start V1.01 "Dupe items
+420a47 8999 83a1
+420a4d 7c42 0090
+end
+
+# This does the same as it did with Diablo.
+# Allows you to use an item on your belt either by right clicking it or
+# pressing the number the represents that location.
+# Written by the Great BoBaFeTT on 28 March 1998.
+start V1.01 "Unlimited Belt
+42113e ff 00
+42117e ff 00
+end
+
+# Written by the Great BoBaFeTT on 28 March 1998
+start V1.01 "See Ghosts
+449d68 7431 9090
+44b77d 0f8544010000 909090909090
+end
+
+# Written by the Great BoBaFeTT on 28 March 1998
+start V1.01 "Pick up Extended ASCII ears
+42795f 7f ff
+end
+
+# Written by the Great BoBaFeTT on 28 March 1998
+start V1.01 "Set map (game name) on when enter game
+401d1e 25 0d
+401d23 00 01
+end
+
+# Written by the Great BoBaFeTT on 28 March 1998
+start V1.01 "Always have Rogue's ability to see traps
+454870 7528 9090
+end
+
+# Written by the Great BoBaFeTT on 28 March 1998
+start V1.01 "Get All Spells
+403dab 01 00
+end
+
+# Written by the Great BoBaFeTT on 28 March 1998
+start V1.01 "Spell level 23 on wearing (38 total)
+42402f 8a45a4 b01790
+end
+
+# Written by the Great BoBaFeTT on 29 March 1998
+start V1.01 "See which level a player is on when they type
+45f0e7 b801 3400
+end
+
+# Written by the Great BoBaFeTT on 29 March 1998
+start V1.01 "Don't lose life when cast Blood Star
+4337e3 01940198010000 90909090909090
+4337f7 01940190010000 90909090909090
+end
+
+# Written by the Great BoBaFeTT on 29 March 1998
+start V1.01 "Don't lose life when cast Bone Spirit
+43560c 01940198010000 90909090909090
+435620 01940190010000 90909090909090
+end
+
+# Written by the Great BoBaFeTT on 29 March 1998
+start V1.01 "Don't lose life when touch fire
+44ee41 298698010000 909090909090
+44ee6a 2908 9090
+end
+
+# If you accidentally hit the Sacred Shrine, this will stop your
+# mana from going down.
+# This was written by the Great BoBaFeTT on 29 March 1998
+start V1.01 "Prevent loss of mana when hit Sacred shrine
+45207a 8917 9090
+452082 29840aac010000 90909090909090
+452096 29840ab0010000 90909090909090
+4520aa 29840aa8010000 90909090909090
+end
+
+# This was written by the Great BoBaFeTT on 30 March 1998
+start V1.01 "Prevent loss of a spell level when hit Enchanted Shrine
+451f45 7c06 eb09
+end
+
+# This fixes the bug (still existing in Hellfire 1.01) that hangs your
+# computer when you have all items with indestructible durability
+# and you hit the Hidden Shrine.
+# Also prevents loss of durability on any item.
+# This was written by the Great BoBaFeTT on 30 March 1998
+start V1.01 "Prevent loss of durability when hit Hidden Shrine
+451a0b ae 6a
+451a18 83840178040000ec 9090909090909090
+451a2d 8384017c040000ec 9090909090909090
+end
+
+# This is very useful if you use hot keys (function keys)
+# for spells.  This allows you to set your hot keys automatically
+# when you enter a game.  It saves on time for each time you
+# enter a game.  It works by setting location 488c3e to
+# the values of the spell to hot key you want.  For example,
+# I use F5 for Bone Spirit, F6 for Nova,
+# F7 for Teleport and F8 for Fireball.  Bone Spirit=23
+# Nova=12, Teleport=17, Fireball=0C
+# Just set location 488c3e to the value of the spell for the
+# Hot Key you want.  It always goes in order of F5 to F8.
+# Here is the complete list of spells and their hex values that you
+# would use:
+# 2b - Reflect
+# 2a - Warp
+# 29 - Immolation
+# 28 - Lightning Wall
+# 24 - Bone Spirit
+# 23 - Blood Star
+# 22 - Heal Other
+# 21 - Telekinesis
+# 20 - Resurrect
+# 1F - Holy Bolt
+# 1E - Charged Bolt
+# 1D - Elemental
+# 1C - Trap Disarm
+# 1B - Staff Recharge
+# 1A - Item Repair
+# 19 - Etherealize
+# 18 - Apocalypse
+# 17 - Teleport
+# 16 - Rage
+# 15 - Golem
+# 14 - Inferno
+# 13 - Invisibility
+# 12 - Nova
+# 11 - Blood Ritual
+# 10 - Doom Serpents
+# 0F - Flame Wave
+# 0E - Chain Lightning
+# 0D - Guardian
+# 0C - Fireball
+# 0B - Mana Shield
+# 0A - Phasing
+# 09 - Infravision
+# 08 - Stone Curse
+# 07 - Town Portal
+# 06 - Firwall
+# 05 - Identify
+# 04 - Flash
+# 03 - Lightning
+# 02 - Healing
+# 01 - Firebolt
+# This was written by the Great BoBaFeTT on 2 April 1998
+start V1.01 "Set Hot Keys to Spells
+408fda 370000 25fc07
+488c03 00 60
+488c04 0000 33f6
+488c06 00000000 a1e8ad6e
+488c0b 00000000 69c0c855
+488c11 0000000000 030514ae6e
+488c17 000000000000 0fbe9e3e8c48
+488c1e 0000000000 899cb02401
+488c25 0000000000 8a9e428c48
+488c2b 0000000000 889c303401
+488c32 00 46
+488c33 000000 83fe04
+488c36 0000 7cdf
+488c38 00 61
+488c39 0000000000 e9d703f8ff
+488c3e 00000000 2312170c
+488c42 00000000 01010101
+end
+
+# Tired of setting the current spell when you enter each game?
+# This sets it for you so that you don't have to keep setting it.
+# At 488c5e is the number of the spell you want to set to.
+# I use Infravision as my default spell so 09 is the value there.
+# Use the same numbers from the list given in the other hack
+# called "Set Hot Keys to Spells".
+# This was written by the Great BoBaFeTT on 2 April 1998
+start V1.01 "Set the current spell when enter game
+409080 542c04 c2fb07
+488c46 00 50
+488c47 00000000 a1e8ad6e
+488c4c 00000000 69c0c855
+488c52 0000000000 030514ae6e
+488c58 000000 c780b4
+488c5e 00 09
+488c62 000000 c780b8
+488c68 00 01
+488c6c 00 58
+488c6d 0000000000 e96630fcff
+end
+
+# This ensures that when you enter a game, your set for
+# Player Attack instead of Player Friendly.
+# This was written by the Great BoBaFeTT on 2 April 1998
+start V1.01 "Set Player Attack on when enter game
+40906d f6c704 01fc07
+488c72 0000000000 c7055c5349
+488c7c 0000000000 e9e6cbfcff
+end
+
+# NOTE: The Crash ITEM in Hellfire will not work yet.
+# Apparently Hellfire has been fixed so that items cannot crash
+# the game.
+# This was written by the Great BoBaFeTT on 2 April 1998
+start V1.01 "BoBaFeTT's Editor
+# This is a simplified editor that does everything you need to truly kill anyone on battle.net
+# Works in both Windows 95 and Windows NT as all my hacks for Diablo do.
+#	/0	will turn the picked up ear into that of player 0 - With a real ear that can be picked up
+#	/1	will turn the picked up ear into that of player 1 - and level matches and class matches
+#	/2	will turn the picked up ear into that of player 2 - correctly.  You will see the graphic
+#	/3	will turn the picked up ear into that of player 3 - change when you drop it in your INV or ground
+#	/c	will turn the picked up item into a crash item - New method of crash - others have no protection
+4078dd 3d0000 a61308
+488c81 00 61
+488c82 0000000000 e997ecf7ff
+488c87 00 60
+488c88 00000000 a018114d
+488c8d 0000 3c2f
+488c8f 0000 75f0
+488c91 00000000 a019114d
+488c96 0000 3c63
+488c98 000000 0f849a
+488c9e 0000 3c30
+488ca0 0000 72df
+488ca2 0000 3c33
+488ca4 0000 77db
+488ca6 0000 2c30
+488ca8 000000 0fbed0
+488cab 00000000 69d2c855
+488cb1 0000000000 031514ae6e
+488cb7 00000000 81c24001
+488cbd 0000000000 8b1de8ad6e
+488cc3 00000000 69dbc855
+488cc9 0000000000 031d14ae6e
+488ccf 00000000 81c3e153
+488cd5 0000 8bfb
+488cd7 0000000000 8d358c5c4a
+488cdd 0000 b907
+488ce2 0000 f3a4
+488ce4 0000 8bf2
+488ce6 00 ac
+488ce7 00 aa
+488ce8 0000 0ac0
+488cea 0000 75fa
+488cec 000000 8a4278
+488cef 000000 888387
+488cf5 000000 8a4220
+488cf8 0000 3c01
+488cfa 0000 7738
+488cfc 0000 0414
+488cfe 000000 888383
+488d04 0000 8a02
+488d06 000000 8843c8
+488d09 000000 8a4201
+488d0c 000000 8843c7
+488d0f 000000 8a4202
+488d12 000000 8843c6
+488d15 000000 8a4203
+488d18 000000 8843c5
+488d1b 000000 8a4204
+488d1e 000000 8843c4
+488d21 000000 8a4205
+488d24 000000 8843c3
+488d27 00 61
+488d28 0000000000 c60518114d
+488d2f 0000000000 e927ebf7ff
+488d34 0000 0411
+488d36 0000 ebc6
+488d38 0000000000 8b0de8ad6e
+488d3e 00000000 69c9c855
+488d44 0000000000 030d14ae6e
+488d4a 00000000 81c1a453
+488d50 0000000000 c701ec0505
+488d56 000000000000 66c741043f01
+488d5c 00000000 81c16801
+488d62 00000000 66c70101
+488d67 0000 ebbe
+end
+
+# This was written by Soulburner
+#Start V1.01 "Fastest Hit Recovery"
+#459e48 558bec c20400
+#End
+
+# This was written by Soulburner
+#Start V1.01 "Soulburner's God Mode"
+#45a0dc 7f09 9090
+#45a0e1 0f843b030000 e93c03000090
+#End
+
+# This was written by Soulburner
+#Start V1.01 "You Can't Gain Experience"
+#458492 558bec c20400
+#End
+
+# This was written by Soulburner
+#Start V1.01 "Cast Spells In Town"
+#45e017 72 eb
+#447f73 75 eb
+#448c61 75 eb
+#448d42 75 eb
+#448e15 75 eb
+#4491e3 75 eb
+#4492a8 75 eb
+#44936d 75 eb
+#449432 75 eb
+#End
+
+# This was written by Soulburner
+#Start V1.01 "The Nameless Ear"
+#42798a 688c5c4a00 68ff034d00
+#End
+
+# This was written by Soulburner
+#Start V1.01 "See Monster Resistances"
+#444442 7c7f 9090
+#4444c5 0f8cf0000000 909090909090
+#End
+
+# This was written by Soulburner
+#Start V1.01 "Allow Duped Items In Games"
+#4225e9 74 eb
+#45a014 7c eb
+#422291 74 eb
+#End
+
+# This was written by Soulburner
+#Start V1.01 "You Don't Drop An Ear When You Die"
+#45a439 0f84fe000000 e9ff00000090
+#45a544 55 c3
+#End
+
+# This will change the name of your ear dropped when you die.
+# You can make it anything you want.  Including no name at all
+# or Extended ASCII.  Just change the hex staring at 4a149c.
+# Pad with 00's if you're making the text shorter.  The last
+# character on that line in this dat doesn't have to be 00 because
+# the next character in memory is 00.
+# You're limited to 14 characters with this hack.  If you make
+# it longer than that, you may crash.
+# This was written by the Great BoBaFeTT on 3 April 1998
+start V1.01 "Change the name of your dropped ear
+45a2f8 8d843840010000 b89c144a009090
+# Make the ear say "Ear of Lizard Monger" - Note: This is not what I use
+4a149c 446561646c792048756e7465720000 4c697a617264204d6f6e6765720000
+end
+
+start V1.01 "See comments in .hak file. I don't use the ones below
+end
+
+# This is safe to use on Hellfire even on Kali as the other
+# player cannot see the amount of gold in your inventory
+# even if they use the Raymond Trainer.
+# This was written by someone else.
+start V1.01 "Unlimited Gold
+45d992 3b8c30cc0100008d 8d8406cc010000b9 
+45d99a 8430cc0100007408 ffffff7f89089090
+end
+
+# This does no damage to the other player whatsoever
+# You may crash if you use this.  For example, if you
+# go to the Hive and then another player blows it to
+# get down there, you will crash.
+# Written by the Great BoBaFeTT on 28 March 1998
+#start V1.01 "Invisibility (Ghost Mode) - Does not harm others
+#44b51e f204 7900
+#end
+
+#start V1.01 "Resist All
+#4240a2 4b 64
+#4240b2 3bd7 8bcf
+#4240cb 3bdf 8bd7
+#4240d4 7e04 9090
+#end
+
+#start V1.01 "All Spells As Skills
+#458982 750cc78010010000 c78010010000ffff  
+#45898A 00000002eb5980f9 ffffc78012010000
+#458992 01750cc78010 ffffffffeb57
+#end
+
+#start V1.01 "Footprints
+#495278 54686520556e686f6c7920416c746172 66726f6d2054656c65706f7274000000
+#49528c 506f7274616c20746f 466f6f747072696e74
+#4b7b12 00 41
+#end
+
+#start V1.01 "Remove Stat Restrictions
+#4b5dd0 fa000000320000003c00000064000000 ffffff7fffffff7fffffff7fffffff7f
+#4b5de0 3700000046000000fa00000050000000 ffffff7fffffff7fffffff7fffffff7f
+#4b5df0 2d000000fa0000005500000050000000 ffffff7fffffff7fffffff7fffffff7f
+#4b5e00 96000000500000009600000050000000 ffffff7fffffff7fffffff7fffffff7f
+#4b5e10 78000000780000007800000064000000 ffffff7fffffff7fffffff7fffffff7f
+#4b5e20 ff000000000000003700000096000000 ffffff7fffffff7fffffff7fffffff7f
+#end
+
+#start V1.01 "New Character Stats 127
+#4b5d40 1E000000140000000F00000019000000 7f0000007f0000007f0000007f000000
+#4b5d50 14000000280000000A0000000F000000 7f0000007f0000007f0000007f000000
+#4b5d60 230000000F0000001400000000000000 7f0000007f0000007f0000007f000000
+#4b5d70 140000001E0000000F00000019000000 7f0000007f0000007f0000007f000000
+#4b5d80 19000000140000001900000014000000 7f0000007f0000007f0000007f000000
+#4b5d90 14000000140000001400000019000000 7f0000007f0000007f0000007f000000
+#4b5da0 1e000000140000000a00000019000000 7f0000007f0000007f0000007f000000
+#4b5db0 190000001e000000 7f0000007f000000
+#end
+
+#start V1.01 "Quick Level
+#4b5e34 d0070000 01000000
+#4b5e38 0c120000 02000000
+#4b5e3c 681f0000 04000000
+#4b5e40 c9300000 08000000
+#4b5e44 52470000 10000000
+#4b5e48 70640000 20000000
+#4b5e4c ed890000 40000000
+#4b5e50 06ba0000 80000000
+#4b5e54 84F70000 00010000
+#4b5e58 DB450100 00020000
+#4b5e5c 4FA90100 00040000
+#4b5e60 1E270200 00080000
+#4b5e64 B3C50200 00100000
+#4b5e68 A3860300 00200000
+#4b5e6c 38C90400 00400000
+#4b5e70 83780600 00800000
+#4b5e74 36B70800 00000100
+#4b5e78 69B20B00 00000200
+#4b5e7c 82A40F00 00000400
+#4b5e80 D3D81400 00000800
+#4b5e84 28B01B00 00001000
+#4b5e88 67A62400 00002000
+#4b5e8c 8B593000 00004000
+#4b5e90 38923F00 00008000
+#4b5e94 434E5300 00000001
+#4b5e98 80CD6C00 00000002
+#4b5e9c 52A18D00 00000004
+#4b5ea0 6CBFB700 00000008
+#4b5ea4 5798ED00 00000010
+#4b5ea8 54323201 00000020
+#4b5eac 45498901 00000040
+#4b5eb0 5F74F701 00000080
+#end

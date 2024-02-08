@@ -1,0 +1,13 @@
+start v1.07 No Drop Equip At Death
+44e65b 7c eb
+end
+
+start v1.07 No Drop Gold/Ear At Death
+44e679 0f85 90e9
+end
+
+start v1.07 God Mode From Players
+44039b 0f85 90e9
+42b4db 7e eb
+end
+
